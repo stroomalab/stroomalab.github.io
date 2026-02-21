@@ -24,7 +24,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install deps
-        run: pip install pybtex
+        run: pip install pybtex pylatexenc
 
       - name: Build publications HTML
         run: python scripts/build_publications_from_bib.py

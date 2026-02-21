@@ -1,11 +1,13 @@
 from __future__ import annotations
+
+import html
 import re
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, Any, Tuple, Optional
 
 from pybtex.database import parse_file
+from pylatexenc.latex2text import LatexNodes2Text
 
 BIB_PATH = Path("data/publications.bib")
 HTML_PATH = Path("publications.html")
@@ -13,11 +15,26 @@ HTML_PATH = Path("publications.html")
 START = "<!-- AUTO PUBLICATIONS START -->"
 END = "<!-- AUTO PUBLICATIONS END -->"
 
+_l2t = LatexNodes2Text()
+
+
+def latex_to_unicode(s: str) -> str:
+    """Convert LaTeX-escaped strings from .bib into Unicode text."""
+    if not s:
+        return ""
+    out = _l2t.latex_to_text(s)
+    # Remove braces used for capitalization protection (e.g., {{TIMP-1}})
+    out = out.replace("{", "").replace("}", "")
+    # Normalize spacing
+    out = re.sub(r"\s+", " ", out).strip()
+    return out
+
 
 def norm_doi(doi: str) -> str:
     doi = (doi or "").strip().lower()
     doi = doi.replace("https://doi.org/", "").replace("http://doi.org/", "")
     doi = doi.replace("doi:", "").strip()
+    doi = re.sub(r"\s+", "", doi)
     return doi
 
 
@@ -30,7 +47,7 @@ def norm_text(s: str) -> str:
     return s
 
 
-def first_field(entry, names):
+def first_field(entry, names) -> str:
     for n in names:
         if n in entry.fields and entry.fields[n].strip():
             return entry.fields[n].strip()
@@ -41,37 +58,45 @@ def get_authors(entry) -> str:
     persons = entry.persons.get("author", [])
     if not persons:
         return ""
-    # "Last, First" -> "First Last"
     out = []
     for p in persons:
         first = " ".join(p.first_names)
         last = " ".join(p.last_names)
         name = (first + " " + last).strip() if (first or last) else str(p)
         out.append(name)
-    return ", ".join(out)
+    return latex_to_unicode(", ".join(out))
 
 
 def build_items():
     bib = parse_file(str(BIB_PATH))
 
-    # Deduplicación:
+    # Dedup priority:
     # 1) DOI
     # 2) PMID
-    # 3) (título normalizado + año)
+    # 3) (title normalized + year)
     seen = set()
-
     items = []
-    for _, entry in bib.entries.items():
-        title = first_field(entry, ["title"])
-        year = first_field(entry, ["year"]) or "Unknown"
-        journal = first_field(entry, ["journal", "journaltitle", "booktitle"])
-        doi = norm_doi(first_field(entry, ["doi"]))
-        pmid = first_field(entry, ["pmid"])
 
-        # URL extra (por si quieres link adicional)
+    for _, entry in bib.entries.items():
+        title_raw = first_field(entry, ["title"])
+        year_raw = first_field(entry, ["year"]) or "Unknown"
+        journal_raw = first_field(entry, ["journal", "journaltitle", "booktitle"])
+        doi_raw = first_field(entry, ["doi"])
+        pmid = first_field(entry, ["pmid"])
         url = first_field(entry, ["url"])
 
-        # key de dedupe
+        title = latex_to_unicode(title_raw)
+        journal = latex_to_unicode(journal_raw)
+        year = latex_to_unicode(year_raw) or "Unknown"
+        doi = norm_doi(latex_to_unicode(doi_raw))
+        authors = get_authors(entry)
+
+        # Sort key (year-month if present)
+        month = first_field(entry, ["month"])
+        month = month.zfill(2) if month.isdigit() else "01"
+        sort_key = f"{year}-{month}"
+
+        # Dedupe key
         if doi:
             dedupe_key = ("doi", doi)
         elif pmid:
@@ -82,13 +107,6 @@ def build_items():
         if dedupe_key in seen:
             continue
         seen.add(dedupe_key)
-
-        authors = get_authors(entry)
-
-        # fecha para ordenar (año y si existe month)
-        month = first_field(entry, ["month"])
-        month = month.zfill(2) if month.isdigit() else "01"
-        sort_key = f"{year}-{month}"
 
         items.append(
             dict(
@@ -111,51 +129,64 @@ def render_html(items):
     for it in items:
         by_year[it["year"]].append(it)
 
-    # Orden: años numéricos desc, luego "Unknown"
+    # Order: numeric years desc, then everything else
     def year_key(y: str):
-        return (0, -int(y)) if y.isdigit() else (1, 0)
+        return (0, -int(y)) if str(y).isdigit() else (1, 0)
 
-    html_parts = []
+    parts = []
     for year in sorted(by_year.keys(), key=year_key):
         group = sorted(by_year[year], key=lambda x: x["sort_key"], reverse=True)
 
-        html_parts.append(f'<div class="pub-year-group" id="y{year}">')
-        html_parts.append(f'  <h3 class="pub-year">{year}</h3>')
-        html_parts.append('  <ol class="list">')
+        parts.append(f'<div class="pub-year-group" id="y{html.escape(str(year))}">')
+        parts.append(f'  <h3 class="pub-year">{html.escape(str(year))}</h3>')
+        parts.append('  <ol class="list">')
 
         for p in group:
+            # Escape for safe HTML
+            authors = html.escape(p["authors"]) if p["authors"] else ""
+            title = html.escape(p["title"]) if p["title"] else ""
+            journal = html.escape(p["journal"]) if p["journal"] else ""
+
             links = []
             if p["doi"]:
-                links.append(f'<a href="https://doi.org/{p["doi"]}" target="_blank" rel="noopener">DOI</a>')
+                links.append(
+                    f'<a href="https://doi.org/{html.escape(p["doi"])}" target="_blank" rel="noopener">DOI</a>'
+                )
             if p["pmid"]:
-                links.append(f'<a href="https://pubmed.ncbi.nlm.nih.gov/{p["pmid"]}/" target="_blank" rel="noopener">PubMed</a>')
-            # Si quieres mostrar URL adicional (eLife reviewed-preprints, etc.)
+                links.append(
+                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html.escape(p["pmid"])}/" target="_blank" rel="noopener">PubMed</a>'
+                )
             if p["url"]:
-                links.append(f'<a href="{p["url"]}" target="_blank" rel="noopener">Journal</a>')
+                links.append(
+                    f'<a href="{html.escape(p["url"])}" target="_blank" rel="noopener">Journal</a>'
+                )
 
             links_html = f'<span class="pub-links">{" ".join(links)}</span>' if links else ""
 
-            html_parts.append("    <li>")
-            if p["authors"]:
-                html_parts.append(f"      {p['authors']}.")
-            if p["title"]:
-                html_parts.append(f"      <em>{p['title']}</em>")
-            if p["journal"]:
-                html_parts.append(f"      {p['journal']}.")
+            parts.append("    <li>")
+            if authors:
+                parts.append(f"      {authors}.")
+            if title:
+                parts.append(f"      <em>{title}</em>")
+            if journal:
+                parts.append(f"      {journal}.")
             if links_html:
-                html_parts.append(f"      {links_html}")
-            html_parts.append("    </li>")
+                parts.append(f"      {links_html}")
+            parts.append("    </li>")
 
-        html_parts.append("  </ol>")
-        html_parts.append("</div>")
+        parts.append("  </ol>")
+        parts.append("</div>")
 
-    return "\n".join(html_parts)
+    return "\n".join(parts)
 
 
 def inject(fragment: str):
     src = HTML_PATH.read_text(encoding="utf-8")
     if START not in src or END not in src:
-        raise SystemExit("No encuentro los marcadores AUTO PUBLICATIONS en publications.html")
+        raise SystemExit(
+            "No encuentro los marcadores AUTO PUBLICATIONS en publications.html.\n"
+            f"Asegúrate de tener:\n{START}\n...\n{END}"
+        )
 
     before, rest = src.split(START, 1)
     _, after = rest.split(END, 1)
@@ -164,10 +195,13 @@ def inject(fragment: str):
 
 
 def main():
+    if not BIB_PATH.exists():
+        raise SystemExit(f"No existe {BIB_PATH}. ¿Está en data/publications.bib?")
+
     items = build_items()
     fragment = render_html(items)
     inject(fragment)
-    print(f"OK: {len(items)} publicaciones renderizadas (dedupe aplicado).")
+    print(f"OK: {len(items)} publicaciones renderizadas (LaTeX→Unicode + dedupe).")
 
 
 if __name__ == "__main__":
