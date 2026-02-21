@@ -458,3 +458,52 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
   font-size: .9rem;
   opacity: .65;
 }
+
+/* ===== Research illustrations ===== */
+.illus{
+  margin: 1.1rem 0 0 0;
+}
+.illus img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+/* ===== 60/40 split for Experimental approaches ===== */
+.research-split{
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  gap: 1.2rem;
+  align-items: start;
+  margin-top: .4rem;
+}
+
+.research-split-figure{
+  margin: 0;
+  position: sticky;
+  top: 92px; /* stays visible below sticky header; adjust if needed */
+}
+
+.research-split-figure img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .research-split{
+    grid-template-columns: 1fr;
+  }
+  .research-split-figure{
+    position: static;
+  }
+}
