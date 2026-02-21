@@ -471,13 +471,18 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
 }
 
 .illus img{
-  width: min(420px, 32vw);   /* ← ~1/3 pantalla desktop */
-  max-width:100%;
-  height:auto;
-  border-radius:14px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  background:#fff;
+  width: min(520px, 40vw);  /* antes: 420px / 32vw */
+  max-width: 100%;
+  height: auto;
+  display: block;
+
+  /* Integración con el fondo (sin tarjeta) */
+  border: none;
+  box-shadow: none;
+  background: transparent;
+
+  /* Mantén esquinas suaves, pero sin separar */
+  border-radius: 10px;
 }
 
 /* Mobile → full width */
