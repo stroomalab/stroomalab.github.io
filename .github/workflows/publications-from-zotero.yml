@@ -1,15 +1,18 @@
-name: Publications Auto-Sync
+name: Publications from Zotero (.bib)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 6 * * 1"  # lunes 06:00 UTC (ajústalo)
+  push:
+    paths:
+      - "data/publications.bib"
+      - "scripts/build_publications_from_bib.py"
+      - "publications.html"
 
 permissions:
   contents: write
 
 jobs:
-  sync:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,13 +23,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Build publications
-        run: python scripts/build_publications.py
+      - name: Install deps
+        run: pip install pybtex
+
+      - name: Build publications HTML
+        run: python scripts/build_publications_from_bib.py
 
       - name: Commit changes (if any)
         run: |
           git config user.name "stroomalab-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add publications.html generated/publications_journal.html || true
-          git commit -m "Auto-sync publications" || exit 0
+          git add publications.html
+          git commit -m "Auto-update publications from Zotero" || exit 0
           git push
