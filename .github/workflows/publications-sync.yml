@@ -1,0 +1,32 @@
+name: Publications Auto-Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"  # lunes 06:00 UTC (ajústalo)
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build publications
+        run: python scripts/build_publications.py
+
+      - name: Commit changes (if any)
+        run: |
+          git config user.name "stroomalab-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add publications.html generated/publications_journal.html || true
+          git commit -m "Auto-sync publications" || exit 0
+          git push
