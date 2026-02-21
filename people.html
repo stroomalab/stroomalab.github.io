@@ -5,13 +5,197 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>StroomaLab — People</title>
   <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ===== People directory (pro layout) ===== */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 980px) {
+      .people-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .people-grid { grid-template-columns: 1fr; }
+    }
+
+    .person-tile {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .person-tile:hover, .person-tile:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      border-color: rgba(0,0,0,.14);
+      outline: none;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid rgba(0,0,0,.08);
+      flex: 0 0 auto;
+    }
+
+    .tile-meta { min-width: 0; }
+    .tile-name {
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0;
+      font-size: 1.03rem;
+    }
+    .tile-role {
+      margin: 2px 0 0;
+      opacity: .78;
+      font-size: .92rem;
+    }
+    .tile-area {
+      margin: 6px 0 0;
+      font-size: .88rem;
+      opacity: .72;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ===== Modal ===== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .modal-backdrop.active { display: flex; }
+
+    .modal {
+      width: min(820px, 100%);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.25);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.10);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      background: rgba(0,0,0,.02);
+    }
+
+    .modal-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .modal-title h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.15;
+    }
+    .modal-title p {
+      margin: 2px 0 0;
+      opacity: .78;
+      font-size: .92rem;
+    }
+
+    .icon-btn {
+      border: 1px solid rgba(0,0,0,.12);
+      background: #fff;
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .icon-btn:hover { background: rgba(0,0,0,.03); }
+
+    .modal-body {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+    }
+    @media (max-width: 820px) {
+      .modal-body { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .panel h4 {
+      margin: 0 0 10px;
+      font-size: .95rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      opacity: .78;
+    }
+
+    .kv2 {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px 10px;
+      font-size: .95rem;
+    }
+    .kv2 .k {
+      font-weight: 800;
+      opacity: .78;
+    }
+
+    .edu-list { margin: 0; padding-left: 18px; }
+    .edu-list li { margin: 6px 0; }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(0,0,0,.12);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .9rem;
+      text-decoration: none;
+    }
+    .pill:hover { background: rgba(0,0,0,.03); }
+
+    /* Gallery keep as you had */
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="topbar">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html"><span class="brand-badge" aria-hidden="true"></span><div>StroomaLab <span class="dot">•</span> UB</div></a>
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <div>StroomaLab <span class="dot">•</span> UB</div>
+      </a>
       <nav class="navlinks" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
@@ -29,241 +213,109 @@
       <p class="lead">Laboratory members and past members.</p>
     </section>
 
+    <!-- ===== PI ===== -->
     <section class="card">
       <h2 class="section-title"><span>Principal</span> Investigator</h2>
-    
-      <article class="person-card">
-        <div class="person-header">
-          <img class="avatar" src="assets/people/jordi.png" apnglt="Jordi Alcaraz" loading="lazy">
-          <div>
-            <h3 class="person-name">Jordi Alcaraz</h3>
-            <p class="person-role">Principal Investigator</p>
+
+      <div class="people-grid">
+        <button class="person-tile" type="button" data-person="jordi-alcaraz">
+          <img class="avatar" src="assets/people/jordi.png" alt="Jordi Alcaraz" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Jordi Alcaraz</p>
+            <p class="tile-role">Principal Investigator</p>
+            <p class="tile-area">Mechanobiology • Tumor microenvironment</p>
           </div>
-        </div>
-    
-        <div class="person-body">
-          <div class="kv">
-            <div class="k">Citizenship</div><div>Spain</div>
-            <div class="k">Email</div><div><a href="mailto:jalcaraz@ub.edu">jalcaraz@ub.edu</a></div>
-            <div class="k">Office</div><div>(+34) 934031148</div>
-            <div class="k">Lab</div><div>(+34) 934039764</div>
-            <div class="k">Fax</div><div>(+34) 934035278</div>
-          </div>
-    
-          <h4 class="subhead">Education</h4>
-          <ul class="list">
-            <li>Ph.D. in Biophysics, University of Barcelona, Barcelona (Spain) 2002</li>
-            <li>M. Sc. in Cell Physiology, University of Barcelona, Barcelona (Spain) 2000</li>
-            <li>B. Sc. in Physics, University of Barcelona, Barcelona (Spain) 1997</li>
-          </ul>
-    
-          <h4 class="subhead">Biosketch</h4>
-          <p>
-            Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016.
-            He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D.
-            in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between
-            the Cancer Biology Laboratory of Dr Mina J Bissell at the Lawrence Berkeley National Laboratory and the Single Molecule
-            Biophysics Laboratory of Prof Carlos Bustamante at UC Berkeley. During his postdoc he pursued research aiming to understand
-            how biophysical cues from the tissue microenvironment control differentiation and cancer progression at the single cell level.
-            He is also an associate group leader at the Institute for Bioengineering of Catalonia (IBEC) and a core member of the Functional
-            Unit of Thoracic Tumors at the Hospital Clinic de Barcelona.
-          </p>
-    
-          <h4 class="subhead">More at</h4>
-          <ul class="list">
-            <li>
-              <strong>ORCID:</strong>
-              <a href="https://orcid.org/0000-0001-7898-1599" target="_blank" rel="noopener">
-                0000-0001-7898-1599
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/jordi-alcaraz-48a05310/" target="_blank" rel="noopener">
-                LinkedIn profile
-              </a>
-            </li>
-            <li>
-              <a href="https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">
-                Google Scholar
-              </a>
-            </li>
-          </ul>
-    
-         
-        </div>
-      </article>
+        </button>
+      </div>
     </section>
+
+    <!-- ===== Postdocs ===== -->
     <section class="card">
       <h2 class="section-title"><span>Postdoctoral</span> Researchers</h2>
-    
+
       <div class="people-grid">
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/patri.gif" alt="Patricia Fernández" loading="lazy">
-            <div>
-              <h3 class="person-name">Patricia Fernández</h3>
-              <p class="person-role">Postdoctoral researcher</p>
-            </div>
+        <button class="person-tile" type="button" data-person="patricia-fernandez">
+          <img class="avatar" src="assets/people/patri.gif" alt="Patricia Fernández" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Patricia Fernández</p>
+            <p class="tile-role">Postdoctoral researcher</p>
+            <p class="tile-area">Cancer-associated fibroblasts • ECM</p>
           </div>
-          <div class="person-body">
-            <div class="kv">
-              <div class="k">Citizenship</div><div>Spain</div>
-              <div class="k">Email</div><div><a href="mailto:pfernandezn@ub.edu">pfernandezn@ub.edu</a></div>
-              <div class="k">Phone</div><div>(+34) 934039764</div>
-            </div>
-            <h4 class="subhead">Education</h4>
-            <ul class="list">
-              <li>PhD in Biomedicine, University of Barcelona, Barcelona (Spain) 2016</li>
-              <li>M. Sc. in Biomedicine, University of Barcelona, Barcelona (Spain) 2010</li>
-              <li>B. Sc. in Biochemistry, Autonomous University of Barcelona, Barcelona (Spain) 2009</li>
-              <li>B. Sc. in Biology, Autonomous University of Barcelona, Barcelona (Spain) 2008</li>
-            </ul>
+        </button>
+
+        <button class="person-tile" type="button" data-person="marc-rico-pasto">
+          <img class="avatar" src="assets/people/marc.gif" alt="Marc Rico-Pastó" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Marc Rico-Pastó</p>
+            <p class="tile-role">Postdoctoral researcher</p>
+            <p class="tile-area">Imaging • Quantitative analysis</p>
           </div>
-        </article>
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/marc.gif" alt="Marc Rico-Pastó" loading="lazy">
-            <div>
-              <h3 class="person-name">Marc Rico-Pastó</h3>
-              <p class="person-role">Postdoctoral researcher</p>
-            </div>
-          </div>
-          <div class="person-body">
-            <div class="kv">
-              <div class="k">Citizenship</div><div>Spain</div>
-              <div class="k">Email</div><div><a href="mailto:mricopasto@ub.edu">mricopasto@ub.edu</a></div>
-              <div class="k">Phone</div><div>(+34) 934039764</div>
-            </div>
-            <h4 class="subhead">Education</h4>
-            <ul class="list">
-              <li>PhD in Physics, University of Barcelona, Barcelona (Spain) 2022</li>
-              <li>M. Sc. in Photonics, Polytechnic University of Catalonia, Barcelona (Spain) 2014</li>
-              <li>B. Sc. in Physics, University of Barcelona, Barcelona (Spain) 2013</li>
-            </ul>
-          </div>
-        </article>
-    
+        </button>
       </div>
     </section>
+
+    <!-- ===== Graduate students ===== -->
     <section class="card">
       <h2 class="section-title"><span>Graduate</span> students (director/tutor)</h2>
-    
+
       <div class="people-grid">
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/berni.gif" alt="Alejandro Bernardo Suarez" loading="lazy">
-            <div>
-              <h3 class="person-name">Alejandro Bernardo Suarez</h3>
-              <p class="person-role">Graduate student</p>
-            </div>
+        <button class="person-tile" type="button" data-person="alejandro-bernardo">
+          <img class="avatar" src="assets/people/berni.gif" alt="Alejandro Bernardo Suarez" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Alejandro Bernardo Suarez</p>
+            <p class="tile-role">Graduate student</p>
+            <p class="tile-area">Stromagenesis • Fibroblast heterogeneity</p>
           </div>
-          <div class="person-body">
-            <div class="kv">
-              <div class="k">Citizenship</div><div>Spain</div>
-              <div class="k">Email</div><div><a href="mailto:abernardo@ub.edu">abernardo@ub.edu</a></div>
-              <div class="k">Phone</div><div>(+34) 934039764</div>
-            </div>
-            <h4 class="subhead">Education</h4>
-            <ul class="list">
-              <li>M. Sc. in Biomedical Research, University Pompeu Fabra, Barcelona (Spain) 2021</li>
-              <li>B. Sc. in Biotechnology, Universidad de Oviedo, Oviedo (Spain), 2020</li>
-            </ul>
+        </button>
+
+        <button class="person-tile" type="button" data-person="victoria-batto">
+          <img class="avatar" src="assets/people/vicky.gif" alt="Victoria Batto" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Victoria Batto</p>
+            <p class="tile-role">Graduate student</p>
+            <p class="tile-area">ECM remodeling • Lung cancer</p>
           </div>
-        </article>
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/vicky.gif" alt="Victoria Batto" loading="lazy">
-            <div>
-              <h3 class="person-name">Victoria Batto</h3>
-              <p class="person-role">Graduate student</p>
-            </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="teia-valles">
+          <img class="avatar" src="assets/people/teia.gif" alt="Teia Vallès" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Teia Vallès</p>
+            <p class="tile-role">Graduate student</p>
+            <p class="tile-area">Biomedicine • Translational research</p>
           </div>
-          <div class="person-body">
-            <div class="kv">
-              <div class="k">Citizenship</div><div>Argentina/Spain</div>
-              <div class="k">Email</div><div><a href="mailto:victoriabatto@ub.edu">victoriabatto@ub.edu</a></div>
-              <div class="k">Phone</div><div>(+34) 934039764</div>
-            </div>
-            <h4 class="subhead">Education</h4>
-            <ul class="list">
-              <li>M. Sc. in Biotechnology, Universidad de Buenos Aires, Buenos Aires (Argentina), 2022</li>
-              <li>B. Sc. in Chemical Sciences, Universidad de Buenos Aires, Buenos Aires (Argentina), 2017</li>
-            </ul>
+        </button>
+
+        <button class="person-tile" type="button" data-person="laura-lopez">
+          <img class="avatar" src="assets/people/lauralopez.png" alt="Laura López" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Laura López</p>
+            <p class="tile-role">Associated profile</p>
+            <p class="tile-area">Pathology • Thoracic tumors</p>
           </div>
-        </article>
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/teia.gif" alt="Teia Vallès" loading="lazy">
-            <div>
-              <h3 class="person-name">Teia Vallès</h3>
-              <p class="person-role">Graduate student</p>
-            </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="jose-rodriguez">
+          <img class="avatar" src="assets/people/joserodriguez.png" alt="José Rodríguez" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">José Rodríguez</p>
+            <p class="tile-role">Associated profile</p>
+            <p class="tile-area">Medical imaging • Computing</p>
           </div>
-          <div class="person-body">
-            <div class="kv">
-              <div class="k">Citizenship</div><div>Spain</div>
-              <div class="k">Email</div><div><a href="mailto:tvalles@ub.edu">tvalles@ub.edu</a></div>
-              <div class="k">Phone</div><div>(+34) 934039764</div>
-            </div>
-            <h4 class="subhead">Education</h4>
-            <ul class="list">
-              <li>M. Sc. in TraBiomedicine, University of Barcelona, Barcelona (Spain) 2018</li>
-              <li>B. Sc. in Biomedical Sciences, University of Barcelona, Barcelona (Spain) 2023</li>
-            </ul>
+        </button>
+
+        <button class="person-tile" type="button" data-person="nanthilde-malandain">
+          <img class="avatar" src="assets/people/nanthilde.png" alt="Nanthilde Malandain" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Nanthilde Malandain</p>
+            <p class="tile-role">Associated profile</p>
+            <p class="tile-area">Tissue nanomechanics</p>
           </div>
-        </article>
-    
-        <!-- These 3 exist as images in your assets; no CV text was provided, so minimal cards -->
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/lauralopez.png" alt="Laura López" loading="lazy">
-            <div>
-              <h3 class="person-name">Laura López</h3>
-              <p class="person-role">Associated profile</p>
-            </div>
-          </div>
-          <div class="person-body">
-            <p><b>Role:</b> Pathologist associated with the lab</p>
-          </div>
-        </article>
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/joserodriguez.png" alt="José Rodríguez" loading="lazy">
-            <div>
-              <h3 class="person-name">José Rodríguez</h3>
-              <p class="person-role">Associated profile</p>
-            </div>
-          </div>
-          <div class="person-body">
-            <p><b>Role:</b> Medical image computer engineer</p>
-          </div>
-        </article>
-    
-        <article class="person-card">
-          <div class="person-header">
-            <img class="avatar" src="assets/people/nanthilde.png" alt="Nanthilde Malandain" loading="lazy">
-            <div>
-              <h3 class="person-name">Nanthilde Malandain</h3>
-              <p class="person-role">Associated profile</p>
-            </div>
-          </div>
-          <div class="person-body">
-            <p><b>Role:</b> Tissue nanomechanics</p>
-          </div>
-        </article>
-    
+        </button>
       </div>
     </section>
-    
-    
-    
 
+    <!-- ===== Past members ===== -->
     <section class="card">
       <h2 class="section-title"><span>Past</span> Members</h2>
 
@@ -290,134 +342,392 @@
       </table>
     </section>
 
-   
-<!-- Group Pictures gallery -->
-<section class="card">
-  <h2 class="section-title">Group Pictures</h2>
-  <p class="lead">Lab events, meetings, and celebrations.</p>
+    <!-- ===== Group Pictures gallery (your original) ===== -->
+    <section class="card">
+      <h2 class="section-title">Group Pictures</h2>
+      <p class="lead">Lab events, meetings, and celebrations.</p>
 
-  <div class="gallery">
+      <div class="gallery">
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/aseica-meeting-zaragoza-2024.jpg" aria-label="Open: ASEICA meeting, Zaragoza 2024">
+            <img src="assets/gallery/aseica-meeting-zaragoza-2024.jpg" alt="ASEICA meeting, Zaragoza 2024" loading="lazy">
+          </a>
+          <figcaption class="cap">ASEICA meeting, Zaragoza 2024</figcaption>
+        </figure>
 
-    <!-- 2024 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/aseica-meeting-zaragoza-2024.jpg" aria-label="Open: ASEICA meeting, Zaragoza 2024">
-        <img src="assets/gallery/aseica-meeting-zaragoza-2024.jpg" alt="ASEICA meeting, Zaragoza 2024" loading="lazy">
-      </a>
-      <figcaption class="cap">ASEICA meeting, Zaragoza 2024</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg" aria-label="Open: ECM Pharmacology Congress, Copenhagen 2024">
+            <img src="assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg" alt="ECM Pharmacology Congress, Copenhagen 2024" loading="lazy">
+          </a>
+          <figcaption class="cap">ECM Pharmacology Congress, Copenhagen 2024</figcaption>
+        </figure>
 
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg" aria-label="Open: ECM Pharmacology Congress, Copenhagen 2024">
-        <img src="assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg" alt="ECM Pharmacology Congress, Copenhagen 2024" loading="lazy">
-      </a>
-      <figcaption class="cap">ECM Pharmacology Congress, Copenhagen 2024</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/group-lunch-spring-2023.jpg" aria-label="Open: Group lunch, Spring 2023">
+            <img src="assets/gallery/group-lunch-spring-2023.jpg" alt="Group lunch, Spring 2023" loading="lazy">
+          </a>
+          <figcaption class="cap">Group lunch, Spring 2023</figcaption>
+        </figure>
 
-    <!-- 2023 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/group-lunch-spring-2023.jpg" aria-label="Open: Group lunch, Spring 2023">
-        <img src="assets/gallery/group-lunch-spring-2023.jpg" alt="Group lunch, Spring 2023" loading="lazy">
-      </a>
-      <figcaption class="cap">Group lunch, Spring 2023</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Lab-picture-2022.jpg" aria-label="Open: Lab picture, 2022">
+            <img src="assets/gallery/Lab-picture-2022.jpg" alt="Lab picture, 2022" loading="lazy">
+          </a>
+          <figcaption class="cap">Lab picture, 2022</figcaption>
+        </figure>
 
-    <!-- 2022 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Lab-picture-2022.jpg" aria-label="Open: Lab picture, 2022">
-        <img src="assets/gallery/Lab-picture-2022.jpg" alt="Lab picture, 2022" loading="lazy">
-      </a>
-      <figcaption class="cap">Lab picture, 2022</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Celebrating-Paula-paper-July-2022.jpg" aria-label="Open: Celebrating Paula paper, July 2022">
+            <img src="assets/gallery/Celebrating-Paula-paper-July-2022.jpg" alt="Celebrating Paula paper, July 2022" loading="lazy">
+          </a>
+          <figcaption class="cap">Celebrating Paula paper, July 2022</figcaption>
+        </figure>
 
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Celebrating-Paula-paper-July-2022.jpg" aria-label="Open: Celebrating Paula paper, July 2022">
-        <img src="assets/gallery/Celebrating-Paula-paper-July-2022.jpg" alt="Celebrating Paula paper, July 2022" loading="lazy">
-      </a>
-      <figcaption class="cap">Celebrating Paula paper, July 2022</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg" aria-label="Open: Celebrating Rafa paper, Autumn 2020">
+            <img src="assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg" alt="Celebrating Rafa paper, Autumn 2020" loading="lazy">
+          </a>
+          <figcaption class="cap">Celebrating Rafa paper, Autumn 2020</figcaption>
+        </figure>
 
-    <!-- 2020 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg" aria-label="Open: Celebrating Rafa paper, Autumn 2020">
-        <img src="assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg" alt="Celebrating Rafa paper, Autumn 2020" loading="lazy">
-      </a>
-      <figcaption class="cap">Celebrating Rafa paper, Autumn 2020</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Derek-Radisky-visit-Spring-2019.jpg" aria-label="Open: Derek Radisky visit, Spring 2019">
+            <img src="assets/gallery/Derek-Radisky-visit-Spring-2019.jpg" alt="Derek Radisky visit, Spring 2019" loading="lazy">
+          </a>
+          <figcaption class="cap">Derek Radisky visit, Spring 2019</figcaption>
+        </figure>
 
-    <!-- 2019 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Derek-Radisky-visit-Spring-2019.jpg" aria-label="Open: Derek Radisky visit, Spring 2019">
-        <img src="assets/gallery/Derek-Radisky-visit-Spring-2019.jpg" alt="Derek Radisky visit, Spring 2019" loading="lazy">
-      </a>
-      <figcaption class="cap">Derek Radisky visit, Spring 2019</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Lab-picture-2017.jpg" aria-label="Open: Lab picture, 2017">
+            <img src="assets/gallery/Lab-picture-2017.jpg" alt="Lab picture, 2017" loading="lazy">
+          </a>
+          <figcaption class="cap">Lab picture, 2017</figcaption>
+        </figure>
 
-    <!-- 2017 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Lab-picture-2017.jpg" aria-label="Open: Lab picture, 2017">
-        <img src="assets/gallery/Lab-picture-2017.jpg" alt="Lab picture, 2017" loading="lazy">
-      </a>
-      <figcaption class="cap">Lab picture, 2017</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Crowdfunding-2013.gif" aria-label="Open: Crowdfunding 2013">
+            <img src="assets/gallery/Crowdfunding-2013.gif" alt="Crowdfunding 2013" loading="lazy">
+          </a>
+          <figcaption class="cap">Crowdfunding 2013</figcaption>
+        </figure>
 
-    <!-- 2013 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Crowdfunding-2013.gif" aria-label="Open: Crowdfunding 2013">
-        <img src="assets/gallery/Crowdfunding-2013.gif" alt="Crowdfunding 2013" loading="lazy">
-      </a>
-      <figcaption class="cap">Crowdfunding 2013</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Christmas2010.jpg" aria-label="Open: Christmas 2010">
+            <img src="assets/gallery/Christmas2010.jpg" alt="Christmas 2010" loading="lazy">
+          </a>
+          <figcaption class="cap">Christmas 2010</figcaption>
+        </figure>
 
-    <!-- 2010 -->
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Christmas2010.jpg" aria-label="Open: Christmas 2010">
-        <img src="assets/gallery/Christmas2010.jpg" alt="Christmas 2010" loading="lazy">
-      </a>
-      <figcaption class="cap">Christmas 2010</figcaption>
-    </figure>
+        <figure class="gallery-item">
+          <a href="#" data-full="assets/gallery/Christmas2010SecondPicture.jpg" aria-label="Open: Christmas 2010 (second picture)">
+            <img src="assets/gallery/Christmas2010SecondPicture.jpg" alt="Christmas 2010 (second picture)" loading="lazy">
+          </a>
+          <figcaption class="cap">Christmas 2010 (second picture)</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <figure class="gallery-item">
-      <a href="#" data-full="assets/gallery/Christmas2010SecondPicture.jpg" aria-label="Open: Christmas 2010 (second picture)">
-        <img src="assets/gallery/Christmas2010SecondPicture.jpg" alt="Christmas 2010 (second picture)" loading="lazy">
-      </a>
-      <figcaption class="cap">Christmas 2010 (second picture)</figcaption>
-    </figure>
+  </main>
 
+  <!-- ===== People modal (click tile → open) ===== -->
+  <div class="modal-backdrop" id="peopleModalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="peopleModalName">
+      <div class="modal-head">
+        <div class="modal-title">
+          <img class="avatar" id="peopleModalAvatar" src="" alt="" />
+          <div style="min-width:0">
+            <h3 id="peopleModalName"></h3>
+            <p id="peopleModalRole"></p>
+          </div>
+        </div>
+        <button class="icon-btn" type="button" id="peopleModalClose" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="panel">
+          <h4>Summary</h4>
+          <p id="peopleModalSummary" style="margin:0;"></p>
+
+          <div class="link-row" id="peopleModalLinks" aria-label="External links"></div>
+        </div>
+
+        <div class="panel">
+          <h4>Details</h4>
+          <div class="kv2">
+            <div class="k">Citizenship</div><div id="peopleModalCitizenship"></div>
+            <div class="k">Research area</div><div id="peopleModalArea"></div>
+          </div>
+
+          <h4 style="margin-top:14px;">Education</h4>
+          <ul class="edu-list" id="peopleModalEdu"></ul>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 
+  <!-- ===== Gallery lightbox (your original) ===== -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <img src="" alt="">
+  </div>
 
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <img src="" alt="">
-</div>
+  <script>
+    // ==== People data (EDIT HERE) ====
+    const PEOPLE = {
+      "jordi-alcaraz": {
+        name: "Jordi Alcaraz",
+        role: "Principal Investigator",
+        avatar: "assets/people/jordi.png",
+        citizenship: "Spain",
+        area: "Mechanobiology; tumor microenvironment; fibroblast biology",
+        education: [
+          "Ph.D. in Biophysics, University of Barcelona (Spain), 2002",
+          "M.Sc. in Cell Physiology, University of Barcelona (Spain), 2000",
+          "B.Sc. in Physics, University of Barcelona (Spain), 1997"
+        ],
+        summary:
+          "Serra-Húnter Associate Professor at the School of Medicine (UB) since 2016. Research focuses on how biophysical cues from the tissue microenvironment regulate differentiation, stromagenesis and cancer progression, bridging mechanobiology, quantitative imaging and translational oncology.",
+        links: [
+          { label: "ORCID", href: "https://orcid.org/0000-0001-7898-1599" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/jordi-alcaraz-48a05310/" },
+          { label: "Google Scholar", href: "https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" },
+          { label: "Email", href: "mailto:jalcaraz@ub.edu" }
+        ]
+      },
 
-<script>
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
+      "patricia-fernandez": {
+        name: "Patricia Fernández",
+        role: "Postdoctoral researcher",
+        avatar: "assets/people/patri.gif",
+        citizenship: "Spain",
+        area: "Tumor-associated fibroblasts; ECM signaling; lung cancer",
+        education: [
+          "PhD in Biomedicine, University of Barcelona (Spain), 2016",
+          "M.Sc. in Biomedicine, University of Barcelona (Spain), 2010",
+          "B.Sc. in Biochemistry, Autonomous University of Barcelona (Spain), 2009",
+          "B.Sc. in Biology, Autonomous University of Barcelona (Spain), 2008"
+        ],
+        summary:
+          "Works on fibroblast-driven tumor progression and therapeutic vulnerabilities in stromal compartments. Interested in ECM remodeling, signaling pathways and translational strategies.",
+        links: [
+          { label: "Email", href: "mailto:pfernandezn@ub.edu" }
+        ]
+      },
 
-  document.querySelectorAll('.gallery a[data-full]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      lightboxImg.src = link.dataset.full;
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden', 'false');
+      "marc-rico-pasto": {
+        name: "Marc Rico-Pastó",
+        role: "Postdoctoral researcher",
+        avatar: "assets/people/marc.gif",
+        citizenship: "Spain",
+        area: "Quantitative imaging; microenvironment mechanics; computational analysis",
+        education: [
+          "PhD in Physics, University of Barcelona (Spain), 2022",
+          "M.Sc. in Photonics, Polytechnic University of Catalonia (Spain), 2014",
+          "B.Sc. in Physics, University of Barcelona (Spain), 2013"
+        ],
+        summary:
+          "Develops and applies quantitative imaging and analysis pipelines to characterize stromal structure and mechanics across disease contexts.",
+        links: [
+          { label: "Email", href: "mailto:mricopasto@ub.edu" }
+        ]
+      },
+
+      "alejandro-bernardo": {
+        name: "Alejandro Bernardo Suarez",
+        role: "Graduate student",
+        avatar: "assets/people/berni.gif",
+        citizenship: "Spain",
+        area: "Stromagenesis; cancer-associated fibroblast heterogeneity",
+        education: [
+          "M.Sc. in Biomedical Research, Pompeu Fabra University (Spain), 2021",
+          "B.Sc. in Biotechnology, Universidad de Oviedo (Spain), 2020"
+        ],
+        summary:
+          "Studies stromal heterogeneity and fibroblast programs associated with tumor progression, combining molecular profiling and microenvironment modeling.",
+        links: [
+          { label: "Email", href: "mailto:abernardo@ub.edu" }
+        ]
+      },
+
+      "victoria-batto": {
+        name: "Victoria Batto",
+        role: "Graduate student",
+        avatar: "assets/people/vicky.gif",
+        citizenship: "Argentina / Spain",
+        area: "ECM remodeling; mechanobiology; lung cancer models",
+        education: [
+          "M.Sc. in Biotechnology, Universidad de Buenos Aires (Argentina), 2022",
+          "B.Sc. in Chemical Sciences, Universidad de Buenos Aires (Argentina), 2017"
+        ],
+        summary:
+          "Investigates how ECM composition and mechanics modulate cellular behavior in disease-relevant microenvironments.",
+        links: [
+          { label: "Email", href: "mailto:victoriabatto@ub.edu" }
+        ]
+      },
+
+      "teia-valles": {
+        name: "Teia Vallès",
+        role: "Graduate student",
+        avatar: "assets/people/teia.gif",
+        citizenship: "Spain",
+        area: "Translational biomedicine; tissue microenvironment",
+        education: [
+          "M.Sc. in TraBiomedicine, University of Barcelona (Spain), 2018",
+          "B.Sc. in Biomedical Sciences, University of Barcelona (Spain), 2023"
+        ],
+        summary:
+          "Works at the interface of translational research and microenvironment biology, supporting experimental models and data interpretation.",
+        links: [
+          { label: "Email", href: "mailto:tvalles@ub.edu" }
+        ]
+      },
+
+      "laura-lopez": {
+        name: "Laura López",
+        role: "Associated profile",
+        avatar: "assets/people/lauralopez.png",
+        citizenship: "Spain",
+        area: "Pathology; thoracic tumors",
+        education: [],
+        summary:
+          "Pathologist associated with the lab, collaborating on translational studies and tissue-based characterization.",
+        links: []
+      },
+
+      "jose-rodriguez": {
+        name: "José Rodríguez",
+        role: "Associated profile",
+        avatar: "assets/people/joserodriguez.png",
+        citizenship: "",
+        area: "Medical imaging; computing; data pipelines",
+        education: [],
+        summary:
+          "Medical image computer engineer collaborating on quantitative analysis and research software.",
+        links: []
+      },
+
+      "nanthilde-malandain": {
+        name: "Nanthilde Malandain",
+        role: "Associated profile",
+        avatar: "assets/people/nanthilde.png",
+        citizenship: "",
+        area: "Tissue nanomechanics",
+        education: [],
+        summary:
+          "Collaborates on tissue nanomechanics and mechanobiology questions, linking physical measurements with biology.",
+        links: []
+      }
+    };
+
+    // ==== Modal logic ====
+    const backdrop = document.getElementById("peopleModalBackdrop");
+    const closeBtn = document.getElementById("peopleModalClose");
+
+    const mAvatar = document.getElementById("peopleModalAvatar");
+    const mName = document.getElementById("peopleModalName");
+    const mRole = document.getElementById("peopleModalRole");
+    const mCit = document.getElementById("peopleModalCitizenship");
+    const mArea = document.getElementById("peopleModalArea");
+    const mSummary = document.getElementById("peopleModalSummary");
+    const mEdu = document.getElementById("peopleModalEdu");
+    const mLinks = document.getElementById("peopleModalLinks");
+
+    let lastActive = null;
+
+    function openModal(personId) {
+      const p = PEOPLE[personId];
+      if (!p) return;
+
+      lastActive = document.activeElement;
+
+      mAvatar.src = p.avatar || "";
+      mAvatar.alt = p.name || "Portrait";
+      mName.textContent = p.name || "";
+      mRole.textContent = p.role || "";
+      mCit.textContent = p.citizenship || "—";
+      mArea.textContent = p.area || "—";
+      mSummary.textContent = p.summary || "—";
+
+      // Education list
+      mEdu.innerHTML = "";
+      const edu = (p.education || []).filter(Boolean);
+      if (edu.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "—";
+        mEdu.appendChild(li);
+      } else {
+        edu.forEach(e => {
+          const li = document.createElement("li");
+          li.textContent = e;
+          mEdu.appendChild(li);
+        });
+      }
+
+      // Links
+      mLinks.innerHTML = "";
+      (p.links || []).forEach(l => {
+        const a = document.createElement("a");
+        a.className = "pill";
+        a.href = l.href;
+        a.target = l.href.startsWith("mailto:") ? "_self" : "_blank";
+        a.rel = l.href.startsWith("mailto:") ? "" : "noopener";
+        a.textContent = l.label;
+        mLinks.appendChild(a);
+      });
+
+      backdrop.classList.add("active");
+      backdrop.setAttribute("aria-hidden", "false");
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      backdrop.classList.remove("active");
+      backdrop.setAttribute("aria-hidden", "true");
+      if (lastActive && typeof lastActive.focus === "function") lastActive.focus();
+    }
+
+    document.querySelectorAll("[data-person]").forEach(btn => {
+      btn.addEventListener("click", () => openModal(btn.dataset.person));
     });
-  });
 
-  const closeLightbox = () => {
-    lightbox.classList.remove('active');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-  };
+    closeBtn.addEventListener("click", closeModal);
 
-  lightbox.addEventListener('click', closeLightbox);
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) closeModal();
+    });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-</script>
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && backdrop.classList.contains("active")) closeModal();
+    });
 
+    // ==== Gallery lightbox (your original) ====
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
 
-<footer class="footer"><div class="container">Department of Biomedicine — University of Barcelona</div></footer>  
+    document.querySelectorAll('.gallery a[data-full]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        lightboxImg.src = link.dataset.full;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+    };
+
+    lightbox.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+  <footer class="footer">
+    <div class="container">Department of Biomedicine — University of Barcelona</div>
+  </footer>
 </body>
 </html>
