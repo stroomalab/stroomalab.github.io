@@ -68,6 +68,48 @@
       text-overflow: ellipsis;
     }
 
+    /* ===== PI fixed card ===== */
+    .pi-card {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 18px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .pi-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      background: rgba(0,0,0,.02);
+    }
+    .pi-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid rgba(0,0,0,.08);
+      flex: 0 0 auto;
+    }
+    .pi-head h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.15;
+    }
+    .pi-head p {
+      margin: 4px 0 0;
+      opacity: .78;
+    }
+    .pi-body {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+    }
+    @media (max-width: 820px) {
+      .pi-body { grid-template-columns: 1fr; }
+    }
+
     /* ===== Modal ===== */
     .modal-backdrop {
       position: fixed;
@@ -213,20 +255,56 @@
       <p class="lead">Laboratory members and past members.</p>
     </section>
 
-    <!-- ===== PI ===== -->
+    <!-- ===== PI (fixed card, not clickable) ===== -->
     <section class="card">
       <h2 class="section-title"><span>Principal</span> Investigator</h2>
 
-      <div class="people-grid">
-        <button class="person-tile" type="button" data-person="jordi-alcaraz">
-          <img class="avatar" src="assets/people/jordi.png" alt="Jordi Alcaraz" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Jordi Alcaraz</p>
-            <p class="tile-role">Principal Investigator</p>
-            <p class="tile-area">Mechanobiology • Tumor microenvironment</p>
+      <article class="pi-card">
+        <div class="pi-head">
+          <img class="pi-avatar" src="assets/people/jordi.png" alt="Jordi Alcaraz" loading="lazy">
+          <div style="min-width:0">
+            <h3>Jordi Alcaraz</h3>
+            <p>Principal Investigator • Mechanobiology • Tumor microenvironment</p>
+            <div class="link-row" style="margin-top:10px">
+              <a class="pill" href="mailto:jalcaraz@ub.edu">Email</a>
+              <a class="pill" href="https://orcid.org/0000-0001-7898-1599" target="_blank" rel="noopener">ORCID</a>
+              <a class="pill" href="https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="pill" href="https://www.linkedin.com/in/jordi-alcaraz-48a05310/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
-        </button>
-      </div>
+        </div>
+
+        <div class="pi-body">
+          <div class="panel">
+            <h4>Biosketch</h4>
+            <p style="margin:0;">
+              Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016.
+              He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D.
+              in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between
+              the Cancer Biology Laboratory of Dr Mina J Bissell at the Lawrence Berkeley National Laboratory and the Single Molecule
+              Biophysics Laboratory of Prof Carlos Bustamante at UC Berkeley. During his postdoc he pursued research aiming to understand
+              how biophysical cues from the tissue microenvironment control differentiation and cancer progression at the single cell level.
+              He is also an associate group leader at the Institute for Bioengineering of Catalonia (IBEC) and a core member of the Functional
+              Unit of Thoracic Tumors at the Hospital Clinic de Barcelona.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h4>Details</h4>
+            <div class="kv2">
+              <div class="k">Citizenship</div><div>Spain</div>
+              <div class="k">Research area</div><div>Mechanobiology; tumor microenvironment; fibroblast biology</div>
+            </div>
+
+            <h4 style="margin-top:14px;">Education</h4>
+            <ul class="edu-list">
+              <li>Ph.D. in Biophysics, University of Barcelona (Spain), 2002</li>
+              <li>M.Sc. in Cell Physiology, University of Barcelona (Spain), 2000</li>
+              <li>B.Sc. in Physics, University of Barcelona (Spain), 1997</li>
+            </ul>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- ===== Postdocs ===== -->
@@ -278,7 +356,7 @@
         </button>
 
         <button class="person-tile" type="button" data-person="teia-valles">
-          <img class="avatar" src="assets/people/teia.gif" alt="Teia Vallès" loading="lazy">
+          <img class="avatar" src="assets/people/teia.jpeg" alt="Teia Vallès" loading="lazy">
           <div class="tile-meta">
             <p class="tile-name">Teia Vallès</p>
             <p class="tile-role">Graduate student</p>
@@ -473,6 +551,7 @@
   <script>
     // ==== People data (EDIT HERE) ====
     const PEOPLE = {
+      // NOTE: PI is shown as fixed card above (not using modal)
       "jordi-alcaraz": {
         name: "Jordi Alcaraz",
         role: "Principal Investigator",
@@ -485,7 +564,7 @@
           "B.Sc. in Physics, University of Barcelona (Spain), 1997"
         ],
         summary:
-          "Serra-Húnter Associate Professor at the School of Medicine (UB) since 2016. Research focuses on how biophysical cues from the tissue microenvironment regulate differentiation, stromagenesis and cancer progression, bridging mechanobiology, quantitative imaging and translational oncology.",
+          "Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016. He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D. in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between the Cancer Biology Laboratory of Dr Mina J Bissell at the Lawrence Berkeley National Laboratory and the Single Molecule Biophysics Laboratory of Prof Carlos Bustamante at UC Berkeley. During his postdoc he pursued research aiming to understand how biophysical cues from the tissue microenvironment control differentiation and cancer progression at the single cell level. He is also an associate group leader at the Institute for Bioengineering of Catalonia (IBEC) and a core member of the Functional Unit of Thoracic Tumors at the Hospital Clinic de Barcelona.",
         links: [
           { label: "ORCID", href: "https://orcid.org/0000-0001-7898-1599" },
           { label: "LinkedIn", href: "https://www.linkedin.com/in/jordi-alcaraz-48a05310/" },
@@ -499,7 +578,7 @@
         role: "Postdoctoral researcher",
         avatar: "assets/people/patri.gif",
         citizenship: "Spain",
-        area: "Tumor-associated fibroblasts; ECM signaling; lung cancer",
+        area: "Area",
         education: [
           "PhD in Biomedicine, University of Barcelona (Spain), 2016",
           "M.Sc. in Biomedicine, University of Barcelona (Spain), 2010",
@@ -507,7 +586,7 @@
           "B.Sc. in Biology, Autonomous University of Barcelona (Spain), 2008"
         ],
         summary:
-          "Works on fibroblast-driven tumor progression and therapeutic vulnerabilities in stromal compartments. Interested in ECM remodeling, signaling pathways and translational strategies.",
+          "Summary.",
         links: [
           { label: "Email", href: "mailto:pfernandezn@ub.edu" }
         ]
@@ -518,14 +597,14 @@
         role: "Postdoctoral researcher",
         avatar: "assets/people/marc.gif",
         citizenship: "Spain",
-        area: "Quantitative imaging; microenvironment mechanics; computational analysis",
+        area: "Area",
         education: [
           "PhD in Physics, University of Barcelona (Spain), 2022",
           "M.Sc. in Photonics, Polytechnic University of Catalonia (Spain), 2014",
           "B.Sc. in Physics, University of Barcelona (Spain), 2013"
         ],
         summary:
-          "Develops and applies quantitative imaging and analysis pipelines to characterize stromal structure and mechanics across disease contexts.",
+          "Summary.",
         links: [
           { label: "Email", href: "mailto:mricopasto@ub.edu" }
         ]
@@ -536,13 +615,13 @@
         role: "Graduate student",
         avatar: "assets/people/berni.gif",
         citizenship: "Spain",
-        area: "Stromagenesis; cancer-associated fibroblast heterogeneity",
+        area: "Area",
         education: [
           "M.Sc. in Biomedical Research, Pompeu Fabra University (Spain), 2021",
           "B.Sc. in Biotechnology, Universidad de Oviedo (Spain), 2020"
         ],
         summary:
-          "Studies stromal heterogeneity and fibroblast programs associated with tumor progression, combining molecular profiling and microenvironment modeling.",
+          "Summary.",
         links: [
           { label: "Email", href: "mailto:abernardo@ub.edu" }
         ]
@@ -553,13 +632,13 @@
         role: "Graduate student",
         avatar: "assets/people/vicky.gif",
         citizenship: "Argentina / Spain",
-        area: "ECM remodeling; mechanobiology; lung cancer models",
+        area: "Area",
         education: [
           "M.Sc. in Biotechnology, Universidad de Buenos Aires (Argentina), 2022",
           "B.Sc. in Chemical Sciences, Universidad de Buenos Aires (Argentina), 2017"
         ],
         summary:
-          "Investigates how ECM composition and mechanics modulate cellular behavior in disease-relevant microenvironments.",
+          "Summary",
         links: [
           { label: "Email", href: "mailto:victoriabatto@ub.edu" }
         ]
@@ -570,13 +649,13 @@
         role: "Graduate student",
         avatar: "assets/people/teia.gif",
         citizenship: "Spain",
-        area: "Translational biomedicine; tissue microenvironment",
+        area: "Area",
         education: [
           "M.Sc. in TraBiomedicine, University of Barcelona (Spain), 2018",
           "B.Sc. in Biomedical Sciences, University of Barcelona (Spain), 2023"
         ],
         summary:
-          "Works at the interface of translational research and microenvironment biology, supporting experimental models and data interpretation.",
+          "Summary.",
         links: [
           { label: "Email", href: "mailto:tvalles@ub.edu" }
         ]
@@ -637,6 +716,9 @@
     function openModal(personId) {
       const p = PEOPLE[personId];
       if (!p) return;
+
+      // PI is fixed card; do not open modal for PI
+      if (personId === "jordi-alcaraz") return;
 
       lastActive = document.activeElement;
 
