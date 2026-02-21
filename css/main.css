@@ -437,3 +437,13 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
 .footer-meta{ min-width: 0; }
 .footer-line{ line-height: 1.25; }
 .footer-line.small{ font-size: .92rem; opacity: .78; }
+
+.footer-logo-link{
+  display: inline-block;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.footer-logo-link:hover{
+  transform: translateY(-2px);
+  opacity: .85;
+}

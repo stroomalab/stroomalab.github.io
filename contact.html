@@ -102,22 +102,34 @@
   </main>
 
   <footer class="footer footer-pro">
-    <div class="container footer-center">
-      <a class="footer-brand" href="https://www.ub.edu/" target="_blank" rel="noopener" aria-label="University of Barcelona">
-        <img class="footer-logo" src="assets/universitat_icon.png" alt="University of Barcelona logo" loading="lazy">
+    <div class="footer-inner">
+  
+      <a href="https://www.ub.edu/" 
+         target="_blank" 
+         rel="noopener"
+         class="footer-logo-link"
+         aria-label="University of Barcelona website">
+  
+        <img
+          class="footer-logo"
+          src="assets/universitat_icon.png"
+          alt="University of Barcelona logo"
+          loading="lazy"
+        >
       </a>
   
-      <div class="footer-meta">
-        <div class="footer-line">
-          Department of Biomedicine — University of Barcelona
-        </div>
-        <div class="footer-line small">
-          © <span id="year"></span> StroomaLab. All rights reserved.
-        </div>
-      </div>
+      <p class="footer-text">
+        Department of Biomedicine — University of Barcelona
+      </p>
+  
+      <p class="footer-copy">
+        © <span id="year"></span> StroomaLab
+      </p>
+  
     </div>
   </footer>
   
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
