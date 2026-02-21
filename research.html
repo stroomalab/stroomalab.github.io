@@ -111,6 +111,25 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="container">Department of Biomedicine — University of Barcelona</div></footer>
-</body>
-</html>
+  <footer class="footer footer-pro">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="https://www.ub.edu/" target="_blank" rel="noopener" aria-label="University of Barcelona">
+        <img class="footer-logo" src="assets/universitat_icon.png" alt="University of Barcelona logo" loading="lazy">
+      </a>
+  
+      <div class="footer-meta">
+        <div class="footer-line">
+          Department of Biomedicine — University of Barcelona
+        </div>
+        <div class="footer-line small">
+          © <span id="year"></span> StroomaLab. All rights reserved.
+          <span class="sep">•</span>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
