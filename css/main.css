@@ -860,3 +860,53 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
 .brand-accent {
   color: var(--accent, #1fbf75); /* your lab green */
 }
+
+/* ===================== */
+/* Responsive navigation */
+/* ===================== */
+
+.nav-toggle {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .navlinks {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+
+    background: var(--card, #fff);
+    border-top: 1px solid var(--border, #e6e6e6);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem;
+
+    transform: translateY(-120%);
+    transition: transform .25s ease;
+  }
+
+  .navlinks a {
+    padding: .75rem 0;
+  }
+
+  .navlinks.open {
+    transform: translateY(0);
+  }
+
+  .nav-wrap {
+    position: relative;
+  }
+}

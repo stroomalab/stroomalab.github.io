@@ -22,6 +22,11 @@
           Strooma<span class="brand-accent">Lab</span>
         </div>
       </a>
+
+      <!-- MOBILE MENU BUTTON -->
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      ☰
+    </button>
   
       <nav class="navlinks" aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
@@ -161,4 +166,18 @@
   
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+<script>
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".navlinks");
+  
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  
+    const expanded =
+      toggle.getAttribute("aria-expanded") === "true";
+  
+    toggle.setAttribute("aria-expanded", !expanded);
+  });
   </script>
