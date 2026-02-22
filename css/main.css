@@ -935,3 +935,68 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
     flex-direction: column;
   }
 }
+/* ===================== */
+/* GitHub section (Resources) */
+/* ===================== */
+
+.github-card {
+  background: var(--card, #fff);
+}
+
+.github-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.github-btn {
+  font-weight: 600;
+}
+
+.github-visual {
+  display: grid;
+  place-items: center;
+}
+
+.github-mark {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border, #e6e6e6);
+  border-radius: 16px;
+  background: var(--card, #fff);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  opacity: .95;
+}
+
+.github-mark svg {
+  opacity: .9;
+}
+
+.github-mark-text {
+  line-height: 1.15;
+}
+
+.github-mark-title {
+  font-weight: 750;
+}
+
+.github-mark-sub {
+  font-size: .9rem;
+  opacity: .7;
+  margin-top: .2rem;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .github-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .github-mark {
+    justify-content: center;
+  }
+}
