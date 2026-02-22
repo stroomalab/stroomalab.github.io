@@ -169,15 +169,36 @@
   </script>
 
 <script>
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".navlinks");
-  
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  
-    const expanded =
-      toggle.getAttribute("aria-expanded") === "true";
-  
-    toggle.setAttribute("aria-expanded", !expanded);
-  });
-  </script>
+  (function () {
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector(".navlinks");
+
+    if (!toggle || !nav) return;
+
+    function closeMenu() {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Close when clicking a nav link (mobile UX)
+    nav.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", closeMenu);
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
+      if (!clickedInside) closeMenu();
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  })();
+</script>
