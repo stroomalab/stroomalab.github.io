@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>StroomaLab — Contact</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
@@ -11,10 +12,17 @@
 
   <header class="topbar">
     <div class="container nav-wrap">
+  
       <a class="brand" href="index.html">
-        <span class="brand-badge" aria-hidden="true"></span>
-        <div>StroomaLab <span class="dot">•</span> UB</div>
+        <span class="brand-badge" aria-hidden="true">
+          <img src="assets/StroomaLabIco.png" alt="" />
+        </span>
+  
+        <div class="brand-name">
+          Strooma<span class="brand-accent">Lab</span>
+        </div>
       </a>
+  
       <nav class="navlinks" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
@@ -23,6 +31,7 @@
         <a href="resources.html">Resources</a>
         <a href="contact.html" aria-current="page">Contact</a>
       </nav>
+  
     </div>
   </header>
 
@@ -32,72 +41,66 @@
       <p class="lead">Principal Investigator contact details and address.</p>
     </section>
 
-    <section class="card">
-      <h2 class="section-title"><span>Jordi</span> Alcaraz</h2>
-     
-      <div class="contact-grid">
-        <!-- Contact -->
-        <div>
-          <h3>Contact details</h3>
+    <section class="card contact-modern">
+
+      <div class="contact-modern-grid">
+    
+        <!-- LEFT: CONTACT -->
+        <div class="contact-info">
+    
+          <h2 class="section-title"><span>Jordi</span> Alcaraz</h2>
+    
           <ul class="list">
             <li>
               <b>Email:</b>
-              <a href="mailto:jalcaraz@ub.edu" aria-label="Email Jordi Alcaraz">
-                jalcaraz@ub.edu
-              </a>
+              <a href="mailto:jalcaraz@ub.edu">jalcaraz@ub.edu</a>
             </li>
+    
             <li>
               <b>Office:</b>
-              <a href="tel:+34934031148" aria-label="Call office phone">
-                (+34) 934 031 148
-              </a>
+              <a href="tel:+34934031148">(+34) 934 031 148</a>
             </li>
+    
             <li>
               <b>Lab:</b>
-              <a href="tel:+34934039764" aria-label="Call lab phone">
-                (+34) 934 039 764
-              </a>
+              <a href="tel:+34934039764">(+34) 934 039 764</a>
             </li>
+    
             <li>
               <b>Fax:</b>
-              <a href="tel:+34934035278" aria-label="Call fax number">
-                (+34) 934 035 278
-              </a>
+              <a href="tel:+34934035278">(+34) 934 035 278</a>
             </li>
           </ul>
-
-          <div class="actions">
-            <a class="btn" href="mailto:jalcaraz@ub.edu">Email</a>
-            <a class="btn" href="tel:+34934031148">Call office</a>
-          </div>
-        </div>
-
-        <!-- Address -->
-        <div>
-          <h3>Address</h3>
+    
+          <h3 style="margin-top:1.2rem;">Address</h3>
+    
           <address>
             Unitat de Biofísica i Bioenginyeria<br />
             Facultat de Medicina — Universitat de Barcelona<br />
             Casanova 143<br />
             08036 Barcelona, Spain
           </address>
-
-          <div class="actions">
-            <a
-              class="btn"
-              href="https://www.google.com/maps/search/?api=1&query=Casanova+143+08036+Barcelona"
-              target="_blank"
-              rel="noopener"
-            >
-              Open in Maps
-            </a>
-          </div>
-
-          <p class="muted" style="margin-top: .75rem;">
+    
+    
+          <p class="muted" style="margin-top:.75rem;">
             Visiting? Please email us in advance to arrange access.
           </p>
+    
         </div>
+    
+    
+        <!-- RIGHT: MAP -->
+        <div class="contact-map">
+          <iframe
+            title="Map — Casanova 143 Barcelona"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Casanova%20143,%2008036%20Barcelona&output=embed">
+          </iframe>
+        </div>
+    
       </div>
+    
     </section>
   </main>
 

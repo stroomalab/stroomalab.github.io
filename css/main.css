@@ -767,3 +767,96 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
   margin-top: 0.25rem;
   padding-left: 0.5rem; /* leve indent */
 }
+
+
+/* ===================== */
+/* Modern contact map layout */
+/* ===================== */
+
+.contact-modern {
+  padding: 0;
+  overflow: hidden;
+}
+
+.contact-modern-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: stretch;
+}
+
+.contact-info {
+  padding: 2rem;
+}
+
+/* MAP */
+.contact-map {
+  min-height: 420px;
+  background: #f3f4f6;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-modern-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    min-height: 320px;
+  }
+
+  .contact-info {
+    padding: 1.5rem;
+  }
+}
+
+/* ===================== */
+/* Navbar lab logo */
+/* ===================== */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* container size = navbar logo size */
+.brand-badge {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+  border-radius: 10px; /* optional */
+}
+
+/* THIS resizes giant images automatically */
+.brand-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===================== */
+/* Brand name styling */
+/* ===================== */
+
+.brand-name {
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  color: var(--text, #1f2933);
+}
+
+.brand-accent {
+  color: var(--accent, #1fbf75); /* your lab green */
+}
