@@ -453,5 +453,20 @@
   </footer>
   
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+  
+    // Expand/Collapse all publications (ranges + years)
+    (function () {
+      const expandBtn = document.getElementById("pub-expand-all");
+      const collapseBtn = document.getElementById("pub-collapse-all");
+  
+      function setAll(open) {
+        document.querySelectorAll("details.pub-range-group, details.pub-year-group")
+          .forEach(d => { d.open = open; });
+      }
+  
+      if (expandBtn) expandBtn.addEventListener("click", () => setAll(true));
+      if (collapseBtn) collapseBtn.addEventListener("click", () => setAll(false));
+    })();
   </script>

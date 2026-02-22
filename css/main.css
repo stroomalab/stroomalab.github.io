@@ -672,3 +672,98 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
 .pub-year-group > .list {
   margin-top: 0.5rem;
 }
+
+/* ===================== */
+/* Publications controls + accordion */
+/* ===================== */
+
+.pub-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.btn.btn-small {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border, #e6e6e6);
+  background: var(--card, #fff);
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn.btn-small:hover {
+  filter: brightness(0.98);
+}
+
+/* Year details */
+.pub-year-group {
+  border-top: 1px solid var(--border, #e6e6e6);
+  padding: 0.75rem 0;
+}
+
+.pub-year {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.pub-year::-webkit-details-marker {
+  display: none;
+}
+
+.pub-year::before {
+  content: "▸";
+  display: inline-block;
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+.pub-year-group[open] > .pub-year::before {
+  transform: rotate(90deg) translateY(-1px);
+}
+
+.pub-year-group > .list {
+  margin-top: 0.5rem;
+}
+
+/* Range (decade) details */
+.pub-range-group {
+  border-top: 1px solid var(--border, #e6e6e6);
+  padding: 0.75rem 0;
+}
+
+.pub-range {
+  cursor: pointer;
+  font-weight: 800;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.pub-range::-webkit-details-marker {
+  display: none;
+}
+
+.pub-range::before {
+  content: "▸";
+  display: inline-block;
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+.pub-range-group[open] > .pub-range::before {
+  transform: rotate(90deg) translateY(-1px);
+}
+
+.pub-range-inner {
+  margin-top: 0.25rem;
+  padding-left: 0.5rem; /* leve indent */
+}

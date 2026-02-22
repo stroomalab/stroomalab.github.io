@@ -23,9 +23,7 @@ def latex_to_unicode(s: str) -> str:
     if not s:
         return ""
     out = _l2t.latex_to_text(s)
-    # Remove braces used for capitalization protection (e.g., {{TIMP-1}})
     out = out.replace("{", "").replace("}", "")
-    # Normalize spacing
     out = re.sub(r"\s+", " ", out).strip()
     return out
 
@@ -124,67 +122,129 @@ def build_items():
     return items
 
 
-def render_html(items, open_last_n_years: int = 5) -> str:
+def _render_year_details(year: str, group_items: list[dict], open_by_default: bool) -> str:
+    year_str = html.escape(str(year))
+    open_attr = " open" if open_by_default else ""
+    out = []
+    out.append(f'<details class="pub-year-group" id="y{year_str}"{open_attr}>')
+    out.append(f'  <summary class="pub-year">{year_str}</summary>')
+    out.append('  <ol class="list">')
+
+    for p in group_items:
+        authors = html.escape(p["authors"]) if p["authors"] else ""
+        title = html.escape(p["title"]) if p["title"] else ""
+        journal = html.escape(p["journal"]) if p["journal"] else ""
+
+        links = []
+        if p["doi"]:
+            links.append(
+                f'<a href="https://doi.org/{html.escape(p["doi"])}" target="_blank" rel="noopener">DOI</a>'
+            )
+        if p["pmid"]:
+            links.append(
+                f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html.escape(p["pmid"])}/" target="_blank" rel="noopener">PubMed</a>'
+            )
+        if p["url"]:
+            links.append(
+                f'<a href="{html.escape(p["url"])}" target="_blank" rel="noopener">Journal</a>'
+            )
+
+        links_html = f'<span class="pub-links">{" ".join(links)}</span>' if links else ""
+
+        out.append("    <li>")
+        if authors:
+            out.append(f"      {authors}.")
+        if title:
+            out.append(f"      <em>{title}</em>")
+        if journal:
+            out.append(f"      {journal}.")
+        if links_html:
+            out.append(f"      {links_html}")
+        out.append("    </li>")
+
+    out.append("  </ol>")
+    out.append("</details>")
+    return "\n".join(out)
+
+
+def render_html(
+    items: list[dict],
+    open_last_n_years: int = 5,
+    next_n_years_collapsed: int = 5,
+    older_bucket_size: int = 10,  # decade buckets
+) -> str:
     by_year = defaultdict(list)
     for it in items:
         by_year[it["year"]].append(it)
 
-    # Sorting: numeric years desc first, then non-numeric (e.g. Unknown)
+    # Sort: numeric years desc, then non-numeric at end
     def year_key(y: str):
         return (0, -int(y)) if str(y).isdigit() else (1, 0)
 
     sorted_years = sorted(by_year.keys(), key=year_key)
-
-    # Decide which years are open by default (last N numeric years)
     numeric_years_desc = [y for y in sorted_years if str(y).isdigit()]
-    open_years = set(numeric_years_desc[:open_last_n_years])
+
+    # Split numeric years into:
+    recent = numeric_years_desc[:open_last_n_years]
+    next_block = numeric_years_desc[open_last_n_years : open_last_n_years + next_n_years_collapsed]
+    older = numeric_years_desc[open_last_n_years + next_n_years_collapsed :]
+
+    # Bucket older years by decades (or bucket_size)
+    buckets: dict[tuple[int, int], list[int]] = defaultdict(list)
+    for y in older:
+        yi = int(y)
+        start = (yi // older_bucket_size) * older_bucket_size
+        end = start + older_bucket_size - 1
+        buckets[(start, end)].append(yi)
+
+    # Buckets in descending order (e.g., 2010-2019, 2000-2009, ...)
+    bucket_ranges = sorted(buckets.keys(), key=lambda r: r[0], reverse=True)
 
     parts = []
-    for year in sorted_years:
+
+    # Controls
+    parts.append(
+        """
+<div class="pub-controls" aria-label="Publication list controls">
+  <button type="button" class="btn btn-small" id="pub-expand-all">Expand all</button>
+  <button type="button" class="btn btn-small" id="pub-collapse-all">Collapse all</button>
+</div>
+""".strip()
+    )
+
+    # Recent years (open by default)
+    for year in recent:
         group = sorted(by_year[year], key=lambda x: x["sort_key"], reverse=True)
+        parts.append(_render_year_details(year, group, open_by_default=True))
 
-        year_str = html.escape(str(year))
-        open_attr = " open" if year in open_years else ""
+    # Next block years (collapsed)
+    for year in next_block:
+        group = sorted(by_year[year], key=lambda x: x["sort_key"], reverse=True)
+        parts.append(_render_year_details(year, group, open_by_default=False))
 
-        # Use <details>/<summary> for collapsible years
-        parts.append(f'<details class="pub-year-group" id="y{year_str}"{open_attr}>')
-        parts.append(f'  <summary class="pub-year">{year_str}</summary>')
-        parts.append('  <ol class="list">')
+    # Older buckets (each bucket is a parent <details>, containing per-year <details>)
+    for (start, end) in bucket_ranges:
+        label = f"{start}–{end}"
+        bucket_id = f"r{start}-{end}"
+        parts.append(f'<details class="pub-range-group" id="{html.escape(bucket_id)}">')
+        parts.append(f'  <summary class="pub-range">{html.escape(label)}</summary>')
+        parts.append('  <div class="pub-range-inner">')
 
-        for p in group:
-            authors = html.escape(p["authors"]) if p["authors"] else ""
-            title = html.escape(p["title"]) if p["title"] else ""
-            journal = html.escape(p["journal"]) if p["journal"] else ""
+        # years inside bucket, desc
+        for yi in sorted(buckets[(start, end)], reverse=True):
+            y = str(yi)
+            group = sorted(by_year[y], key=lambda x: x["sort_key"], reverse=True)
+            # inside buckets, years are collapsed by default
+            parts.append(_render_year_details(y, group, open_by_default=False))
 
-            links = []
-            if p["doi"]:
-                links.append(
-                    f'<a href="https://doi.org/{html.escape(p["doi"])}" target="_blank" rel="noopener">DOI</a>'
-                )
-            if p["pmid"]:
-                links.append(
-                    f'<a href="https://pubmed.ncbi.nlm.nih.gov/{html.escape(p["pmid"])}/" target="_blank" rel="noopener">PubMed</a>'
-                )
-            if p["url"]:
-                links.append(
-                    f'<a href="{html.escape(p["url"])}" target="_blank" rel="noopener">Journal</a>'
-                )
-
-            links_html = f'<span class="pub-links">{" ".join(links)}</span>' if links else ""
-
-            parts.append("    <li>")
-            if authors:
-                parts.append(f"      {authors}.")
-            if title:
-                parts.append(f"      <em>{title}</em>")
-            if journal:
-                parts.append(f"      {journal}.")
-            if links_html:
-                parts.append(f"      {links_html}")
-            parts.append("    </li>")
-
-        parts.append("  </ol>")
+        parts.append("  </div>")
         parts.append("</details>")
+
+    # Non-numeric years (Unknown, In press, etc.) at end (collapsed)
+    non_numeric_years = [y for y in sorted_years if not str(y).isdigit()]
+    for year in non_numeric_years:
+        group = sorted(by_year[year], key=lambda x: x["sort_key"], reverse=True)
+        parts.append(_render_year_details(year, group, open_by_default=False))
 
     return "\n".join(parts)
 
@@ -208,7 +268,12 @@ def main():
         raise SystemExit(f"No existe {BIB_PATH}. ¿Está en data/publications.bib?")
 
     items = build_items()
-    fragment = render_html(items, open_last_n_years=5)
+    fragment = render_html(
+        items,
+        open_last_n_years=5,
+        next_n_years_collapsed=5,
+        older_bucket_size=10,
+    )
     inject(fragment)
     print(f"OK: {len(items)} publicaciones renderizadas (LaTeX→Unicode + dedupe).")
 
