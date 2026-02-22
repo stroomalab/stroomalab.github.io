@@ -124,25 +124,34 @@ def build_items():
     return items
 
 
-def render_html(items):
+def render_html(items, open_last_n_years: int = 5) -> str:
     by_year = defaultdict(list)
     for it in items:
         by_year[it["year"]].append(it)
 
-    # Order: numeric years desc, then everything else
+    # Sorting: numeric years desc first, then non-numeric (e.g. Unknown)
     def year_key(y: str):
         return (0, -int(y)) if str(y).isdigit() else (1, 0)
 
+    sorted_years = sorted(by_year.keys(), key=year_key)
+
+    # Decide which years are open by default (last N numeric years)
+    numeric_years_desc = [y for y in sorted_years if str(y).isdigit()]
+    open_years = set(numeric_years_desc[:open_last_n_years])
+
     parts = []
-    for year in sorted(by_year.keys(), key=year_key):
+    for year in sorted_years:
         group = sorted(by_year[year], key=lambda x: x["sort_key"], reverse=True)
 
-        parts.append(f'<div class="pub-year-group" id="y{html.escape(str(year))}">')
-        parts.append(f'  <h3 class="pub-year">{html.escape(str(year))}</h3>')
+        year_str = html.escape(str(year))
+        open_attr = " open" if year in open_years else ""
+
+        # Use <details>/<summary> for collapsible years
+        parts.append(f'<details class="pub-year-group" id="y{year_str}"{open_attr}>')
+        parts.append(f'  <summary class="pub-year">{year_str}</summary>')
         parts.append('  <ol class="list">')
 
         for p in group:
-            # Escape for safe HTML
             authors = html.escape(p["authors"]) if p["authors"] else ""
             title = html.escape(p["title"]) if p["title"] else ""
             journal = html.escape(p["journal"]) if p["journal"] else ""
@@ -175,7 +184,7 @@ def render_html(items):
             parts.append("    </li>")
 
         parts.append("  </ol>")
-        parts.append("</div>")
+        parts.append("</details>")
 
     return "\n".join(parts)
 
@@ -199,7 +208,7 @@ def main():
         raise SystemExit(f"No existe {BIB_PATH}. ¿Está en data/publications.bib?")
 
     items = build_items()
-    fragment = render_html(items)
+    fragment = render_html(items, open_last_n_years=5)
     inject(fragment)
     print(f"OK: {len(items)} publicaciones renderizadas (LaTeX→Unicode + dedupe).")
 

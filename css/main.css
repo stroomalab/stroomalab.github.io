@@ -634,3 +634,41 @@ h3{ font-size:1.1rem; margin:1.2rem 0 .35rem 0; }
     grid-template-columns:1fr;
   }
 }
+
+/* ===================== */
+/* Publications accordion */
+/* ===================== */
+
+.pub-year-group {
+  border-top: 1px solid var(--border, #e6e6e6);
+  padding: 0.75rem 0;
+}
+
+.pub-year {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.pub-year::-webkit-details-marker {
+  display: none;
+}
+
+.pub-year::before {
+  content: "▸";
+  display: inline-block;
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+.pub-year-group[open] > .pub-year::before {
+  transform: rotate(90deg) translateY(-1px);
+}
+
+.pub-year-group > .list {
+  margin-top: 0.5rem;
+}
