@@ -5,8 +5,6 @@ backend:
   base_url: https://stroomalab-oauth.stroomalab.workers.dev
   auth_endpoint: auth
 
-publish_mode: editorial_workflow
-
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
