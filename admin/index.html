@@ -6,6 +6,24 @@
   <title>StroomaLab Admin</title>
 </head>
 <body>
+
+  <!-- Netlify Identity (NECESARIO para recovery token) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@3/dist/decap-cms.js"></script>
+
 </body>
 </html>
