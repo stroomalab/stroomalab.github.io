@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-  
+
 publish_mode: editorial_workflow
 
 media_folder: "assets/uploads"
@@ -14,6 +14,34 @@ collections:
   - name: "people_data"
     label: "People"
     files:
+      - name: "pi"
+        label: "PI profile"
+        file: "content/people/pi.json"
+        format: "json"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Role", name: "role", widget: "string" }
+          - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
+          - { label: "Research area", name: "area", widget: "string", required: false }
+          - { label: "Photo", name: "avatar", widget: "image", required: false }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+
+          - label: "Education"
+            name: "education"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Degree", name: "degree", widget: "string", required: false }
+              - { label: "Institution", name: "institution", widget: "string", required: false }
+
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+
       - name: "people"
         label: "People list"
         file: "content/people/people.json"
@@ -25,7 +53,6 @@ collections:
             summary: "{{fields.name}} — {{fields.role}}"
             fields:
               - { label: "ID (must match data-person)", name: "id", widget: "string" }
-
               - label: "Group"
                 name: "group"
                 widget: "select"
@@ -33,14 +60,12 @@ collections:
                   - { label: "Postdoctoral researchers", value: "postdoc" }
                   - { label: "Graduate students", value: "grad" }
                   - { label: "Associated profiles", value: "assoc" }
-
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
               - { label: "Research area", name: "area", widget: "string", required: false }
               - { label: "Photo", name: "avatar", widget: "image", required: false }
               - { label: "Summary", name: "summary", widget: "text", required: false }
-
               - label: "Education"
                 name: "education"
                 widget: "list"
@@ -48,7 +73,6 @@ collections:
                 fields:
                   - { label: "Degree", name: "degree", widget: "string", required: false }
                   - { label: "Institution", name: "institution", widget: "string", required: false }
-
               - label: "Links"
                 name: "links"
                 widget: "list"

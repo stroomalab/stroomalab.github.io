@@ -47,17 +47,19 @@
       <p class="lead">Laboratory members and past members.</p>
     </section>
 
-    <!-- ===== PI (fixed card, not clickable) ===== -->
+    <!-- ===== PI (fixed card, NOT clickable, loaded from content/people/pi.json) ===== -->
     <section class="card">
       <h2 class="section-title"><span>Principal</span> Investigator</h2>
 
       <article class="pi-card">
         <div class="pi-head">
-          <img class="pi-avatar" src="assets/people/jordi.png" alt="Jordi Alcaraz" loading="lazy">
+          <img class="pi-avatar" id="piAvatar" src="assets/people/jordi.png" alt="Principal Investigator" loading="lazy">
           <div style="min-width:0">
-            <h3>Jordi Alcaraz</h3>
-            <p>Principal Investigator</p>
-            <div class="link-row" style="margin-top:10px">
+            <h3 id="piName">Jordi Alcaraz</h3>
+            <p id="piRole">Principal Investigator</p>
+
+            <div class="link-row" id="piLinks" style="margin-top:10px">
+              <!-- Filled by JS from pi.json. If JSON fails, this block stays as-is. -->
               <a class="chip" href="mailto:jalcaraz@ub.edu">Email</a>
               <a class="chip" href="https://orcid.org/0000-0001-7898-1599" target="_blank" rel="noopener">ORCID</a>
               <a class="chip" href="https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>
@@ -69,7 +71,7 @@
         <div class="pi-body">
           <div class="panel">
             <h4>Biosketch</h4>
-            <p style="margin:0;">
+            <p id="piSummary" style="margin:0;">
               Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016.
               He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D.
               in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between
@@ -84,11 +86,12 @@
           <div class="panel">
             <h4>Details</h4>
             <div class="kv2">
-              <div class="k">Citizenship</div><div>Spain</div>
+              <div class="k">Citizenship</div><div id="piCitizenship">Spain</div>
+              <div class="k">Research area</div><div id="piArea">Mechanobiology; tumor microenvironment; fibroblast biology</div>
             </div>
 
             <h4 style="margin-top:14px;">Education</h4>
-            <ul class="edu-list">
+            <ul class="edu-list" id="piEdu">
               <li>
                 <div class="degree">Ph.D. in Biophysics</div>
                 <div class="institution">University of Barcelona (Spain), 2002</div>
@@ -112,25 +115,90 @@
     <!-- ===== Postdocs ===== -->
     <section class="card">
       <h2 class="section-title"><span>Postdoctoral</span> Researchers</h2>
-      <div class="people-grid" id="grid-postdoc"></div>
-      <p class="muted" id="empty-postdoc" style="display:none; margin-top:10px;">No entries yet.</p>
+
+      <div class="people-grid">
+        <button class="person-tile" type="button" data-person="patricia-fernandez">
+          <img class="avatar" src="assets/people/patri.gif" alt="Patricia Fernández" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Patricia Fernández</p>
+            <p class="tile-role">Postdoctoral researcher</p>
+            <p class="tile-area">Area</p>
+          </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="marc-rico-pasto">
+          <img class="avatar" src="assets/people/marc.gif" alt="Marc Rico-Pastó" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Marc Rico-Pastó</p>
+            <p class="tile-role">Postdoctoral researcher</p>
+            <p class="tile-area">Area</p>
+          </div>
+        </button>
+      </div>
     </section>
 
     <!-- ===== Graduate students ===== -->
     <section class="card">
       <h2 class="section-title"><span>Graduate</span> students (director/tutor)</h2>
-      <div class="people-grid" id="grid-grad"></div>
-      <p class="muted" id="empty-grad" style="display:none; margin-top:10px;">No entries yet.</p>
+
+      <div class="people-grid">
+        <button class="person-tile" type="button" data-person="alejandro-bernardo">
+          <img class="avatar" src="assets/people/berni.gif" alt="Alejandro Bernardo Suarez" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Alejandro Bernardo Suarez</p>
+            <p class="tile-role">Graduate student</p>
+            <p class="tile-area">Area</p>
+          </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="victoria-batto">
+          <img class="avatar" src="assets/people/vicky.gif" alt="Victoria Batto" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Victoria Batto</p>
+            <p class="tile-role">Graduate student</p>
+            <p class="tile-area">Area</p>
+          </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="teia-valles">
+          <img class="avatar" src="assets/people/teia.jpeg" alt="Teia Vallès" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Teia Vallès</p>
+            <p class="tile-role">Graduate student</p>
+            <p class="tile-area">Area</p>
+          </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="laura-lopez">
+          <img class="avatar" src="assets/people/lauralopez.png" alt="Laura López" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Laura López</p>
+            <p class="tile-role">Associated profile</p>
+            <p class="tile-area">Pathology • Thoracic tumors</p>
+          </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="jose-rodriguez">
+          <img class="avatar" src="assets/people/joserodriguez.png" alt="José Rodríguez" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">José Rodríguez</p>
+            <p class="tile-role">Associated profile</p>
+            <p class="tile-area">Medical imaging • Computing</p>
+          </div>
+        </button>
+
+        <button class="person-tile" type="button" data-person="nanthilde-malandain">
+          <img class="avatar" src="assets/people/nanthilde.png" alt="Nanthilde Malandain" loading="lazy">
+          <div class="tile-meta">
+            <p class="tile-name">Nanthilde Malandain</p>
+            <p class="tile-role">Associated profile</p>
+            <p class="tile-area">Tissue nanomechanics</p>
+          </div>
+        </button>
+      </div>
     </section>
 
-    <!-- ===== Associated profiles ===== -->
-    <section class="card">
-      <h2 class="section-title"><span>Associated</span> profiles</h2>
-      <div class="people-grid" id="grid-assoc"></div>
-      <p class="muted" id="empty-assoc" style="display:none; margin-top:10px;">No entries yet.</p>
-    </section>
-
-    <!-- ===== Past members (kept static for now) ===== -->
+    <!-- ===== Past members ===== -->
     <section class="card">
       <h2 class="section-title"><span>Past</span> Members</h2>
 
@@ -158,7 +226,7 @@
       </table>
     </section>
 
-    <!-- ===== Group Pictures gallery (unchanged) ===== -->
+    <!-- ===== Group Pictures gallery (your original) ===== -->
     <section class="card">
       <h2 class="section-title">Group Pictures</h2>
       <p class="lead">Lab events, meetings, and celebrations.</p>
@@ -263,6 +331,7 @@
         <div class="panel">
           <h4>Summary</h4>
           <p id="peopleModalSummary" style="margin:0;"></p>
+
           <div class="link-row" id="peopleModalLinks" aria-label="External links"></div>
         </div>
 
@@ -280,7 +349,7 @@
     </div>
   </div>
 
-  <!-- ===== Gallery lightbox (unchanged) ===== -->
+  <!-- ===== Gallery lightbox (your original) ===== -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <img src="" alt="">
   </div>
@@ -304,25 +373,121 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
+  <!-- ===== Page scripts ===== -->
   <script>
-    // ====== People loaded from JSON (manager edits content/people/people.json) ======
-    let PEOPLE = {};
-
+    // ====== Helpers ======
     function normalizePeoplePayload(payload) {
-      // Accept:
-      // 1) { "people": [ ... ] }  (Netlify CMS "files" collection style)
-      // 2) [ ... ]               (simple array)
-      // 3) { "id": {...}, ... }  (object keyed by id)
-      if (payload && typeof payload === "object" && Array.isArray(payload.people)) {
-        return payload.people;
-      }
+      // Supports:
+      // - { people: [...] }  (your current people.json)
+      // - [...]             (array)
+      // - { "id": {...} }   (object map)
+      if (!payload) return [];
+
       if (Array.isArray(payload)) return payload;
+
       if (payload && typeof payload === "object") {
-        // convert keyed object to array
-        return Object.entries(payload).map(([id, v]) => ({ id, ...(v || {}) }));
+        if (Array.isArray(payload.people)) return payload.people;
+
+        // if it's a map keyed by id
+        const vals = Object.values(payload);
+        if (vals.length && typeof vals[0] === "object" && vals[0] && vals[0].id) return vals;
       }
       return [];
     }
+
+    function renderEduList(ul, edu) {
+      ul.innerHTML = "";
+      const list = (edu || []).filter(Boolean);
+
+      if (list.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "—";
+        ul.appendChild(li);
+        return;
+      }
+
+      list.forEach(item => {
+        const li = document.createElement("li");
+
+        if (typeof item === "string") {
+          const [deg, ...rest] = item.split(",");
+          const degreeText = (deg || "").trim();
+          const instText = rest.join(",").trim();
+
+          const d = document.createElement("div");
+          d.className = "degree";
+          d.textContent = degreeText || item;
+          li.appendChild(d);
+
+          if (instText) {
+            const inst = document.createElement("div");
+            inst.className = "institution";
+            inst.textContent = instText;
+            li.appendChild(inst);
+          }
+        } else {
+          const d = document.createElement("div");
+          d.className = "degree";
+          d.textContent = item.degree || "—";
+
+          const inst = document.createElement("div");
+          inst.className = "institution";
+          inst.textContent = item.institution || "—";
+
+          li.appendChild(d);
+          li.appendChild(inst);
+        }
+
+        ul.appendChild(li);
+      });
+    }
+
+    function renderLinks(container, links) {
+      container.innerHTML = "";
+      (links || []).forEach(l => {
+        if (!l || !l.href) return;
+        const a = document.createElement("a");
+        a.className = "chip";
+        a.href = l.href;
+        a.target = l.href.startsWith("mailto:") ? "_self" : "_blank";
+        a.rel = l.href.startsWith("mailto:") ? "" : "noopener";
+        a.textContent = l.label || "Link";
+        container.appendChild(a);
+      });
+    }
+
+    // ====== Load PI (content/people/pi.json) ======
+    async function loadPI() {
+      const res = await fetch("content/people/pi.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Could not load content/people/pi.json");
+      return await res.json();
+    }
+
+    function applyPI(pi) {
+      if (!pi || typeof pi !== "object") return;
+
+      const elAvatar = document.getElementById("piAvatar");
+      const elName = document.getElementById("piName");
+      const elRole = document.getElementById("piRole");
+      const elCit = document.getElementById("piCitizenship");
+      const elArea = document.getElementById("piArea");
+      const elSummary = document.getElementById("piSummary");
+      const elEdu = document.getElementById("piEdu");
+      const elLinks = document.getElementById("piLinks");
+
+      if (elAvatar && pi.avatar) { elAvatar.src = pi.avatar; elAvatar.alt = pi.name || "Principal Investigator"; }
+      if (elName) elName.textContent = pi.name || elName.textContent;
+      if (elRole) elRole.textContent = pi.role || elRole.textContent;
+      if (elCit) elCit.textContent = pi.citizenship || "—";
+      if (elArea) elArea.textContent = pi.area || "—";
+      if (elSummary) elSummary.textContent = pi.summary || "—";
+
+      if (elEdu) renderEduList(elEdu, pi.education || []);
+      if (elLinks) renderLinks(elLinks, pi.links || []);
+    }
+
+    // ====== People loaded from JSON (manager edits content/people/people.json) ======
+    let PEOPLE = {};
 
     async function loadPeople() {
       const res = await fetch("content/people/people.json", { cache: "no-store" });
@@ -331,86 +496,26 @@
       const list = normalizePeoplePayload(payload);
 
       PEOPLE = {};
-      list.forEach(p => {
-        if (p && p.id) PEOPLE[p.id] = p;
-      });
+      list.forEach(p => { if (p && p.id) PEOPLE[p.id] = p; });
     }
 
-    function esc(s) {
-      return String(s ?? "");
-    }
-
-    function renderTile(p) {
-      const btn = document.createElement("button");
-      btn.className = "person-tile";
-      btn.type = "button";
-      btn.dataset.person = p.id;
-
-      const img = document.createElement("img");
-      img.className = "avatar";
-      img.loading = "lazy";
-      img.src = p.avatar || "assets/people/placeholder.png"; // optional placeholder
-      img.alt = p.name ? esc(p.name) : "Portrait";
-
-      const meta = document.createElement("div");
-      meta.className = "tile-meta";
-
-      const name = document.createElement("p");
-      name.className = "tile-name";
-      name.textContent = p.name || "—";
-
-      const role = document.createElement("p");
-      role.className = "tile-role";
-      role.textContent = p.role || "—";
-
-      const area = document.createElement("p");
-      area.className = "tile-area";
-      area.textContent = p.area || "";
-
-      meta.appendChild(name);
-      meta.appendChild(role);
-      meta.appendChild(area);
-
-      btn.appendChild(img);
-      btn.appendChild(meta);
-
-      return btn;
-    }
-
-    function renderGroup(groupKey, gridId, emptyId) {
-      const grid = document.getElementById(gridId);
-      const empty = document.getElementById(emptyId);
-      if (!grid) return;
-
-      grid.innerHTML = "";
-
-      const list = Object.values(PEOPLE)
-        .filter(p => (p?.group || "") === groupKey);
-
-      if (list.length === 0) {
-        if (empty) empty.style.display = "block";
-        return;
-      }
-      if (empty) empty.style.display = "none";
-
-      // simple stable sort by name
-      list.sort((a, b) => (a.name || "").localeCompare(b.name || "", undefined, { sensitivity: "base" }));
-
-      list.forEach(p => grid.appendChild(renderTile(p)));
-    }
-
+    // ====== Init (wait for JSON before binding handlers) ======
     (async function initPeoplePage() {
+      // Load PI, but don't break if it fails
+      try {
+        const pi = await loadPI();
+        applyPI(pi);
+      } catch (e) {
+        console.warn(e);
+      }
+
+      // Load people list
       try {
         await loadPeople();
       } catch (e) {
         console.warn(e);
         PEOPLE = {};
       }
-
-      // Render tiles automatically
-      renderGroup("postdoc", "grid-postdoc", "empty-postdoc");
-      renderGroup("grad", "grid-grad", "empty-grad");
-      renderGroup("assoc", "grid-assoc", "empty-assoc");
 
       // ==== Modal logic ====
       const backdrop = document.getElementById("peopleModalBackdrop");
@@ -431,9 +536,6 @@
         const p = PEOPLE[personId];
         if (!p) return;
 
-        // PI is fixed card; do not open modal for PI
-        if (personId === "jordi-alcaraz") return;
-
         lastActive = document.activeElement;
 
         mAvatar.src = p.avatar || "";
@@ -445,62 +547,10 @@
         mSummary.textContent = p.summary || "—";
 
         // Education list
-        mEdu.innerHTML = "";
-        const edu = (p.education || []).filter(Boolean);
-
-        if (edu.length === 0) {
-          const li = document.createElement("li");
-          li.textContent = "—";
-          mEdu.appendChild(li);
-        } else {
-          edu.forEach(item => {
-            const li = document.createElement("li");
-
-            if (typeof item === "string") {
-              const [deg, ...rest] = item.split(",");
-              const degreeText = (deg || "").trim();
-              const instText = rest.join(",").trim();
-
-              const d = document.createElement("div");
-              d.className = "degree";
-              d.textContent = degreeText || item;
-              li.appendChild(d);
-
-              if (instText) {
-                const inst = document.createElement("div");
-                inst.className = "institution";
-                inst.textContent = instText;
-                li.appendChild(inst);
-              }
-            } else {
-              const d = document.createElement("div");
-              d.className = "degree";
-              d.textContent = item.degree || "—";
-
-              const inst = document.createElement("div");
-              inst.className = "institution";
-              inst.textContent = item.institution || "—";
-
-              li.appendChild(d);
-              li.appendChild(inst);
-            }
-
-            mEdu.appendChild(li);
-          });
-        }
+        renderEduList(mEdu, p.education || []);
 
         // Links
-        mLinks.innerHTML = "";
-        (p.links || []).forEach(l => {
-          if (!l || !l.href) return;
-          const a = document.createElement("a");
-          a.className = "chip";
-          a.href = l.href;
-          a.target = l.href.startsWith("mailto:") ? "_self" : "_blank";
-          a.rel = l.href.startsWith("mailto:") ? "" : "noopener";
-          a.textContent = l.label || "Link";
-          mLinks.appendChild(a);
-        });
+        renderLinks(mLinks, p.links || []);
 
         backdrop.classList.add("active");
         backdrop.setAttribute("aria-hidden", "false");
@@ -513,11 +563,8 @@
         if (lastActive && typeof lastActive.focus === "function") lastActive.focus();
       }
 
-      // Event delegation: tiles are generated dynamically
-      document.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-person]");
-        if (!btn) return;
-        openModal(btn.dataset.person);
+      document.querySelectorAll("[data-person]").forEach(btn => {
+        btn.addEventListener("click", () => openModal(btn.dataset.person));
       });
 
       closeBtn.addEventListener("click", closeModal);
@@ -530,7 +577,7 @@
         if (e.key === "Escape" && backdrop.classList.contains("active")) closeModal();
       });
 
-      // ==== Gallery lightbox (unchanged) ====
+      // ==== Gallery lightbox (your original) ====
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = lightbox.querySelector("img");
 
@@ -555,10 +602,11 @@
         if (e.key === "Escape") closeLightbox();
       });
 
-      // ==== Mobile nav toggle ====
+      // ==== Mobile nav toggle (same behavior across pages) ====
       (function () {
         const toggle = document.querySelector(".nav-toggle");
         const nav = document.querySelector(".navlinks");
+
         if (!toggle || !nav) return;
 
         function closeMenu() {
@@ -571,13 +619,18 @@
           toggle.setAttribute("aria-expanded", String(isOpen));
         });
 
-        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+        // Close when clicking a nav link (mobile UX)
+        nav.querySelectorAll("a").forEach(a => {
+          a.addEventListener("click", closeMenu);
+        });
 
+        // Close when clicking outside
         document.addEventListener("click", (e) => {
           const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
           if (!clickedInside) closeMenu();
         });
 
+        // Close on ESC
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") closeMenu();
         });

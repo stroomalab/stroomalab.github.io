@@ -1,0 +1,19 @@
+{
+    "name": "Jordi Alcaraz",
+    "role": "Principal Investigator",
+    "citizenship": "Spain",
+    "area": "Mechanobiology; tumor microenvironment; fibroblast biology",
+    "avatar": "assets/people/jordi.png",
+    "summary": "Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016. He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D. in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between the Cancer Biology Laboratory of Dr Mina J Bissell at the Lawrence Berkeley National Laboratory and the Single Molecule Biophysics Laboratory of Prof Carlos Bustamante at UC Berkeley. During his postdoc he pursued research aiming to understand how biophysical cues from the tissue microenvironment control differentiation and cancer progression at the single cell level. He is also an associate group leader at the Institute for Bioengineering of Catalonia (IBEC) and a core member of the Functional Unit of Thoracic Tumors at the Hospital Clinic de Barcelona.",
+    "education": [
+      { "degree": "Ph.D. in Biophysics", "institution": "University of Barcelona (Spain), 2002" },
+      { "degree": "M.Sc. in Cell Physiology", "institution": "University of Barcelona (Spain), 2000" },
+      { "degree": "B.Sc. in Physics", "institution": "University of Barcelona (Spain), 1997" }
+    ],
+    "links": [
+      { "label": "Email", "href": "mailto:jalcaraz@ub.edu" },
+      { "label": "ORCID", "href": "https://orcid.org/0000-0001-7898-1599" },
+      { "label": "Google Scholar", "href": "https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/jordi-alcaraz-48a05310/" }
+    ]
+  }
