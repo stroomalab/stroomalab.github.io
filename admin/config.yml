@@ -9,13 +9,15 @@ public_folder: "/assets/uploads"
 
 collections:
   # =========================
-  # PEOPLE (single JSON file)
+  # PEOPLE PAGE CONTENT
   # =========================
-  - name: "people_data"
-    label: "People"
+
+  # --- PI (single JSON file) ---
+  - name: "pi_data"
+    label: "PI"
     files:
       - name: "pi"
-        label: "PI profile"
+        label: "Principal Investigator"
         file: "content/people/pi.json"
         format: "json"
         fields:
@@ -23,7 +25,7 @@ collections:
           - { label: "Role", name: "role", widget: "string" }
           - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
           - { label: "Photo", name: "avatar", widget: "image", required: false }
-          - { label: "Summary", name: "summary", widget: "text", required: false }
+          - { label: "Biosketch / Summary", name: "summary", widget: "text", required: false }
 
           - label: "Education"
             name: "education"
@@ -41,6 +43,10 @@ collections:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
 
+  # --- People list (single JSON file) ---
+  - name: "people_data"
+    label: "People"
+    files:
       - name: "people"
         label: "People list"
         file: "content/people/people.json"
@@ -52,6 +58,7 @@ collections:
             summary: "{{fields.name}} — {{fields.role}}"
             fields:
               - { label: "ID (must match data-person)", name: "id", widget: "string" }
+
               - label: "Group"
                 name: "group"
                 widget: "select"
@@ -59,12 +66,14 @@ collections:
                   - { label: "Postdoctoral researchers", value: "postdoc" }
                   - { label: "Graduate students", value: "grad" }
                   - { label: "Associated profiles", value: "assoc" }
+
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
               - { label: "Research area", name: "area", widget: "string", required: false }
               - { label: "Photo", name: "avatar", widget: "image", required: false }
               - { label: "Summary", name: "summary", widget: "text", required: false }
+
               - label: "Education"
                 name: "education"
                 widget: "list"
@@ -72,6 +81,7 @@ collections:
                 fields:
                   - { label: "Degree", name: "degree", widget: "string", required: false }
                   - { label: "Institution", name: "institution", widget: "string", required: false }
+
               - label: "Links"
                 name: "links"
                 widget: "list"
@@ -79,22 +89,24 @@ collections:
                 fields:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "URL", name: "href", widget: "string" }
-  
-      - name: "past_members_data"
-        label: "Past Members"
-        files:
-          - name: "past_members"
-            label: "Past members table"
-            file: "content/people/past_members.json"
-            format: "json"
+
+  # --- Past members table (single JSON file) ---
+  - name: "past_members_data"
+    label: "Past Members"
+    files:
+      - name: "past_members"
+        label: "Past members list"
+        file: "content/people/past_members.json"
+        format: "json"
+        fields:
+          - label: "Past members"
+            name: "past_members"
+            widget: "list"
+            summary: "{{fields.name_role_year}}"
             fields:
-              - label: "Past Members"
-                name: "past_members"
-                widget: "list"
-                summary: "{{fields.name_role_year}}"
-                fields:
-                  - { label: "Name (role), year", name: "name_role_year", widget: "string" }
-                  - { label: "Current position", name: "current_position", widget: "string" }
+              - { label: "Name (role), year", name: "name_role_year", widget: "string" }
+              - { label: "Current position", name: "current_position", widget: "string" }
+
   # =========================
   # NEWS (single JSON file)
   # =========================
