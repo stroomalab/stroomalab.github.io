@@ -1,0 +1,59 @@
+{
+    "images": [
+      {
+        "src": "assets/gallery/aseica-meeting-zaragoza-2024.jpg",
+        "caption": "ASEICA meeting, Zaragoza 2024",
+        "alt": "ASEICA meeting, Zaragoza 2024"
+      },
+      {
+        "src": "assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg",
+        "caption": "ECM Pharmacology Congress, Copenhagen 2024",
+        "alt": "ECM Pharmacology Congress, Copenhagen 2024"
+      },
+      {
+        "src": "assets/gallery/group-lunch-spring-2023.jpg",
+        "caption": "Group lunch, Spring 2023",
+        "alt": "Group lunch, Spring 2023"
+      },
+      {
+        "src": "assets/gallery/Lab-picture-2022.jpg",
+        "caption": "Lab picture, 2022",
+        "alt": "Lab picture, 2022"
+      },
+      {
+        "src": "assets/gallery/Celebrating-Paula-paper-July-2022.jpg",
+        "caption": "Celebrating Paula paper, July 2022",
+        "alt": "Celebrating Paula paper, July 2022"
+      },
+      {
+        "src": "assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg",
+        "caption": "Celebrating Rafa paper, Autumn 2020",
+        "alt": "Celebrating Rafa paper, Autumn 2020"
+      },
+      {
+        "src": "assets/gallery/Derek-Radisky-visit-Spring-2019.jpg",
+        "caption": "Derek Radisky visit, Spring 2019",
+        "alt": "Derek Radisky visit, Spring 2019"
+      },
+      {
+        "src": "assets/gallery/Lab-picture-2017.jpg",
+        "caption": "Lab picture, 2017",
+        "alt": "Lab picture, 2017"
+      },
+      {
+        "src": "assets/gallery/Crowdfunding-2013.gif",
+        "caption": "Crowdfunding 2013",
+        "alt": "Crowdfunding 2013"
+      },
+      {
+        "src": "assets/gallery/Christmas2010.jpg",
+        "caption": "Christmas 2010",
+        "alt": "Christmas 2010"
+      },
+      {
+        "src": "assets/gallery/Christmas2010SecondPicture.jpg",
+        "caption": "Christmas 2010 (second picture)",
+        "alt": "Christmas 2010 (second picture)"
+      }
+    ]
+  }

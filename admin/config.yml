@@ -8,11 +8,10 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-  # =========================
-  # PEOPLE PAGE CONTENT
-  # =========================
 
-  # --- PI (single JSON file) ---
+  # =========================
+  # PEOPLE PAGE: PI
+  # =========================
   - name: "pi_data"
     label: "PI"
     files:
@@ -25,7 +24,7 @@ collections:
           - { label: "Role", name: "role", widget: "string" }
           - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
           - { label: "Photo", name: "avatar", widget: "image", required: false }
-          - { label: "Biosketch / Summary", name: "summary", widget: "text", required: false }
+          - { label: "Biosketch", name: "summary", widget: "text", required: false }
 
           - label: "Education"
             name: "education"
@@ -43,7 +42,9 @@ collections:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
 
-  # --- People list (single JSON file) ---
+  # =========================
+  # PEOPLE PAGE: MEMBERS LIST
+  # =========================
   - name: "people_data"
     label: "People"
     files:
@@ -52,7 +53,7 @@ collections:
         file: "content/people/people.json"
         format: "json"
         fields:
-          - label: "People"
+          - label: "people"
             name: "people"
             widget: "list"
             summary: "{{fields.name}} — {{fields.role}}"
@@ -90,16 +91,18 @@ collections:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "URL", name: "href", widget: "string" }
 
-  # --- Past members table (single JSON file) ---
+  # =========================
+  # PEOPLE PAGE: PAST MEMBERS
+  # =========================
   - name: "past_members_data"
     label: "Past Members"
     files:
       - name: "past_members"
-        label: "Past members list"
+        label: "Past members table"
         file: "content/people/past_members.json"
         format: "json"
         fields:
-          - label: "Past members"
+          - label: "past_members"
             name: "past_members"
             widget: "list"
             summary: "{{fields.name_role_year}}"
@@ -108,41 +111,21 @@ collections:
               - { label: "Current position", name: "current_position", widget: "string" }
 
   # =========================
-  # NEWS (single JSON file)
+  # PEOPLE PAGE: GALLERY
   # =========================
-  - name: "news_data"
-    label: "News"
+  - name: "gallery_data"
+    label: "Group Pictures"
     files:
-      - name: "news"
-        label: "News list"
-        file: "content/news/news.json"
+      - name: "gallery"
+        label: "Gallery images"
+        file: "content/people/gallery.json"
         format: "json"
         fields:
-          - label: "Items"
-            name: "items"
+          - label: "images"
+            name: "images"
             widget: "list"
-            summary: "{{fields.date}} — {{fields.title}}"
+            summary: "{{fields.caption}}"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
-              - { label: "URL", name: "url", widget: "string" }
-
-  # =========================
-  # RESOURCES (single JSON file)
-  # =========================
-  - name: "resources_data"
-    label: "Resources"
-    files:
-      - name: "resources"
-        label: "Resources list"
-        file: "content/resources/resources.json"
-        format: "json"
-        fields:
-          - label: "Links"
-            name: "links"
-            widget: "list"
-            summary: "{{fields.section}} — {{fields.title}}"
-            fields:
-              - { label: "Section (e.g., teaching, outreach)", name: "section", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Image file", name: "src", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string", required: false }
+              - { label: "Alt text", name: "alt", widget: "string", required: false }

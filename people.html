@@ -59,7 +59,7 @@
             <p id="piRole">Principal Investigator</p>
 
             <div class="link-row" id="piLinks" style="margin-top:10px">
-              <!-- Filled by JS from pi.json. If JSON fails, this block stays as-is. -->
+              <!-- Fallback links; JS will replace if pi.json loads -->
               <a class="chip" href="mailto:jalcaraz@ub.edu">Email</a>
               <a class="chip" href="https://orcid.org/0000-0001-7898-1599" target="_blank" rel="noopener">ORCID</a>
               <a class="chip" href="https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>
@@ -72,14 +72,7 @@
           <div class="panel">
             <h4>Biosketch</h4>
             <p id="piSummary" style="margin:0;">
-              Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016.
-              He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D.
-              in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between
-              the Cancer Biology Laboratory of Dr Mina J Bissell at the Lawrence Berkeley National Laboratory and the Single Molecule
-              Biophysics Laboratory of Prof Carlos Bustamante at UC Berkeley. During his postdoc he pursued research aiming to understand
-              how biophysical cues from the tissue microenvironment control differentiation and cancer progression at the single cell level.
-              He is also an associate group leader at the Institute for Bioengineering of Catalonia (IBEC) and a core member of the Functional
-              Unit of Thoracic Tumors at the Hospital Clinic de Barcelona.
+              Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016...
             </p>
           </div>
 
@@ -94,16 +87,6 @@
               <li>
                 <div class="degree">Ph.D. in Biophysics</div>
                 <div class="institution">University of Barcelona (Spain), 2002</div>
-              </li>
-
-              <li>
-                <div class="degree">M.Sc. in Cell Physiology</div>
-                <div class="institution">University of Barcelona (Spain), 2000</div>
-              </li>
-
-              <li>
-                <div class="degree">B.Sc. in Physics</div>
-                <div class="institution">University of Barcelona (Spain), 1997</div>
               </li>
             </ul>
           </div>
@@ -208,96 +191,19 @@
             <th>Current position</th>
           </tr>
         </thead>
-
-        <!-- JS will fill this -->
         <tbody id="pastMembersTbody">
           <tr><td colspan="2" class="muted">Loading…</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- ===== Group Pictures gallery (your original) ===== -->
+    <!-- ===== Group Pictures (auto generated from gallery.json) ===== -->
     <section class="card">
       <h2 class="section-title">Group Pictures</h2>
       <p class="lead">Lab events, meetings, and celebrations.</p>
 
-      <div class="gallery">
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/aseica-meeting-zaragoza-2024.jpg" aria-label="Open: ASEICA meeting, Zaragoza 2024">
-            <img src="assets/gallery/aseica-meeting-zaragoza-2024.jpg" alt="ASEICA meeting, Zaragoza 2024" loading="lazy">
-          </a>
-          <figcaption class="cap">ASEICA meeting, Zaragoza 2024</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg" aria-label="Open: ECM Pharmacology Congress, Copenhagen 2024">
-            <img src="assets/gallery/ecm-pharmacology-congress-copenhagen-2024.jpg" alt="ECM Pharmacology Congress, Copenhagen 2024" loading="lazy">
-          </a>
-          <figcaption class="cap">ECM Pharmacology Congress, Copenhagen 2024</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/group-lunch-spring-2023.jpg" aria-label="Open: Group lunch, Spring 2023">
-            <img src="assets/gallery/group-lunch-spring-2023.jpg" alt="Group lunch, Spring 2023" loading="lazy">
-          </a>
-          <figcaption class="cap">Group lunch, Spring 2023</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Lab-picture-2022.jpg" aria-label="Open: Lab picture, 2022">
-            <img src="assets/gallery/Lab-picture-2022.jpg" alt="Lab picture, 2022" loading="lazy">
-          </a>
-          <figcaption class="cap">Lab picture, 2022</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Celebrating-Paula-paper-July-2022.jpg" aria-label="Open: Celebrating Paula paper, July 2022">
-            <img src="assets/gallery/Celebrating-Paula-paper-July-2022.jpg" alt="Celebrating Paula paper, July 2022" loading="lazy">
-          </a>
-          <figcaption class="cap">Celebrating Paula paper, July 2022</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg" aria-label="Open: Celebrating Rafa paper, Autumn 2020">
-            <img src="assets/gallery/Celebrating-Rafa-paper-Autumn-2020.jpg" alt="Celebrating Rafa paper, Autumn 2020" loading="lazy">
-          </a>
-          <figcaption class="cap">Celebrating Rafa paper, Autumn 2020</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Derek-Radisky-visit-Spring-2019.jpg" aria-label="Open: Derek Radisky visit, Spring 2019">
-            <img src="assets/gallery/Derek-Radisky-visit-Spring-2019.jpg" alt="Derek Radisky visit, Spring 2019" loading="lazy">
-          </a>
-          <figcaption class="cap">Derek Radisky visit, Spring 2019</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Lab-picture-2017.jpg" aria-label="Open: Lab picture, 2017">
-            <img src="assets/gallery/Lab-picture-2017.jpg" alt="Lab picture, 2017" loading="lazy">
-          </a>
-          <figcaption class="cap">Lab picture, 2017</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Crowdfunding-2013.gif" aria-label="Open: Crowdfunding 2013">
-            <img src="assets/gallery/Crowdfunding-2013.gif" alt="Crowdfunding 2013" loading="lazy">
-          </a>
-          <figcaption class="cap">Crowdfunding 2013</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Christmas2010.jpg" aria-label="Open: Christmas 2010">
-            <img src="assets/gallery/Christmas2010.jpg" alt="Christmas 2010" loading="lazy">
-          </a>
-          <figcaption class="cap">Christmas 2010</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <a href="#" data-full="assets/gallery/Christmas2010SecondPicture.jpg" aria-label="Open: Christmas 2010 (second picture)">
-            <img src="assets/gallery/Christmas2010SecondPicture.jpg" alt="Christmas 2010 (second picture)" loading="lazy">
-          </a>
-          <figcaption class="cap">Christmas 2010 (second picture)</figcaption>
-        </figure>
+      <div class="gallery" id="galleryContainer">
+        <p class="muted">Loading gallery…</p>
       </div>
     </section>
 
@@ -321,7 +227,6 @@
         <div class="panel">
           <h4>Summary</h4>
           <p id="peopleModalSummary" style="margin:0;"></p>
-
           <div class="link-row" id="peopleModalLinks" aria-label="External links"></div>
         </div>
 
@@ -347,14 +252,12 @@
   <footer class="footer footer-pro">
     <div class="container">
       <div class="footer-inner">
-
         <a href="https://www.ub.edu/" target="_blank" rel="noopener" aria-label="University of Barcelona website">
           <img class="footer-logo" src="assets/universitat_icon.png" alt="University of Barcelona logo" loading="lazy">
         </a>
 
         <p class="footer-text">Department of Biomedicine — University of Barcelona</p>
         <p class="footer-copy">© <span id="year"></span> StroomaLab</p>
-
       </div>
     </div>
   </footer>
@@ -363,7 +266,6 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- ===== Page scripts ===== -->
   <script>
     // ====== Helpers ======
     function normalizePeoplePayload(payload) {
@@ -372,13 +274,11 @@
       // - [...]             (array)
       // - { "id": {...} }   (object map)
       if (!payload) return [];
-
       if (Array.isArray(payload)) return payload;
 
       if (payload && typeof payload === "object") {
         if (Array.isArray(payload.people)) return payload.people;
 
-        // if it's a map keyed by id
         const vals = Object.values(payload);
         if (vals.length && typeof vals[0] === "object" && vals[0] && vals[0].id) return vals;
       }
@@ -476,7 +376,6 @@
 
     // ====== People loaded from JSON (manager edits content/people/people.json) ======
     let PEOPLE = {};
-
     async function loadPeople() {
       const res = await fetch("content/people/people.json", { cache: "no-store" });
       if (!res.ok) throw new Error("Could not load content/people/people.json");
@@ -489,7 +388,6 @@
 
     // ====== Past Members loaded from JSON ======
     let PAST_MEMBERS = [];
-
     async function loadPastMembers() {
       const res = await fetch("content/people/past_members.json", { cache: "no-store" });
       if (!res.ok) throw new Error("Could not load content/people/past_members.json");
@@ -529,32 +427,69 @@
       });
     }
 
-    // ====== Init (wait for JSON before binding handlers) ======
+    // ====== Gallery loaded from JSON ======
+    let GALLERY = [];
+    async function loadGallery() {
+      const res = await fetch("content/people/gallery.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Could not load content/people/gallery.json");
+      const payload = await res.json();
+      GALLERY = Array.isArray(payload?.images) ? payload.images : [];
+    }
+
+    function renderGallery() {
+      const container = document.getElementById("galleryContainer");
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      if (!GALLERY.length) {
+        container.innerHTML = `<p class="muted">No gallery images yet.</p>`;
+        return;
+      }
+
+      GALLERY.forEach(img => {
+        const src = img?.src;
+        if (!src) return;
+
+        const caption = img?.caption || "";
+        const alt = img?.alt || caption || "Group picture";
+
+        const fig = document.createElement("figure");
+        fig.className = "gallery-item";
+
+        const a = document.createElement("a");
+        a.href = "#";
+        a.dataset.full = src;
+        a.setAttribute("aria-label", caption ? `Open: ${caption}` : "Open image");
+
+        const im = document.createElement("img");
+        im.src = src;
+        im.alt = alt;
+        im.loading = "lazy";
+
+        const fc = document.createElement("figcaption");
+        fc.className = "cap";
+        fc.textContent = caption;
+
+        a.appendChild(im);
+        fig.appendChild(a);
+        fig.appendChild(fc);
+
+        container.appendChild(fig);
+      });
+    }
+
+    // ====== Init ======
     (async function initPeoplePage() {
-      // Load PI, but don't break if it fails
-      try {
-        const pi = await loadPI();
-        applyPI(pi);
-      } catch (e) {
-        console.warn(e);
-      }
+      try { applyPI(await loadPI()); } catch (e) { console.warn(e); }
 
-      // Load people list
-      try {
-        await loadPeople();
-      } catch (e) {
-        console.warn(e);
-        PEOPLE = {};
-      }
+      try { await loadPeople(); } catch (e) { console.warn(e); PEOPLE = {}; }
 
-      // Load past members table
-      try {
-        await loadPastMembers();
-      } catch (e) {
-        console.warn(e);
-        PAST_MEMBERS = [];
-      }
+      try { await loadPastMembers(); } catch (e) { console.warn(e); PAST_MEMBERS = []; }
       renderPastMembersTable();
+
+      try { await loadGallery(); } catch (e) { console.warn(e); GALLERY = []; }
+      renderGallery();
 
       // ==== Modal logic ====
       const backdrop = document.getElementById("peopleModalBackdrop");
@@ -613,17 +548,18 @@
         if (e.key === "Escape" && backdrop.classList.contains("active")) closeModal();
       });
 
-      // ==== Gallery lightbox (your original) ====
+      // ==== Gallery lightbox (works with generated gallery) ====
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = lightbox.querySelector("img");
 
-      document.querySelectorAll(".gallery a[data-full]").forEach(link => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          lightboxImg.src = link.dataset.full;
-          lightbox.classList.add("active");
-          lightbox.setAttribute("aria-hidden", "false");
-        });
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest(".gallery a[data-full]");
+        if (!a) return;
+
+        e.preventDefault();
+        lightboxImg.src = a.dataset.full;
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden", "false");
       });
 
       const closeLightbox = () => {
@@ -638,11 +574,10 @@
         if (e.key === "Escape") closeLightbox();
       });
 
-      // ==== Mobile nav toggle (same behavior across pages) ====
+      // ==== Mobile nav toggle ====
       (function () {
         const toggle = document.querySelector(".nav-toggle");
         const nav = document.querySelector(".navlinks");
-
         if (!toggle || !nav) return;
 
         function closeMenu() {
@@ -655,9 +590,7 @@
           toggle.setAttribute("aria-expanded", String(isOpen));
         });
 
-        nav.querySelectorAll("a").forEach(a => {
-          a.addEventListener("click", closeMenu);
-        });
+        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
 
         document.addEventListener("click", (e) => {
           const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
