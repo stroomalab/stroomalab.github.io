@@ -197,7 +197,7 @@
       </div>
     </section>
 
-    <!-- ===== Past members ===== -->
+    <!-- ===== Past members (loaded from content/people/past_members.json) ===== -->
     <section class="card">
       <h2 class="section-title"><span>Past</span> Members</h2>
 
@@ -208,19 +208,10 @@
             <th>Current position</th>
           </tr>
         </thead>
-        <tbody>
-          <tr><td>Natalia Díaz Valdivia, PhD (postdoc), 2025</td><td>Postdoctoral Researcher, cell signaling group, IRB Barcelona</td></tr>
-          <tr><td>Enrico Almici (grad student), 2022</td><td>Product Manager Digital Healthcare Dept - Antares Vision Group (Italy)</td></tr>
-          <tr><td>Paula Duch (grad student), 2022</td><td>Postdoc, University of Glasgow (UK)</td></tr>
-          <tr><td>Marta Gabasa (postdoc), 2023</td><td>Telomere Therapeutics, Barcelona</td></tr>
-          <tr><td>Rafael Ikemori (postdoc), 2022</td><td>Clinical Research Associate II, MSc-PhD at Grupo Español de Cáncer de Pulmón, Barcelona</td></tr>
-          <tr><td>Alejandro Llorente (grad student), 2022</td><td>FAS Europe Region in Yikon Genomics, Barcelona</td></tr>
-          <tr><td>Alícia Giménez (grad student), 2015</td><td>Senior Scientific Editor | Expert in Educational Program Design and Medical Training</td></tr>
-          <tr><td>Roberto Lugo (grad student), 2014</td><td>Biomedical Researcher at Hospital Regional de Alta Especialidad de la Península de Yucatán, Mexico</td></tr>
-          <tr><td>Marta Puig (grad student), 2014</td><td>Product Manager Rheumatology at Gedeon Richter - PregLem</td></tr>
-          <tr><td>Roland Galgoczy (grad student), 2014</td><td>Independent Consultant - Life Sciences, CompX Health (UK)</td></tr>
-          <tr><td>Irene Acerbi (grad student), 2010</td><td>Management / Clinical Operations in Cancer, Exai Bio, San Francisco (US)</td></tr>
-          <tr><td>Adai Colom (technician), 2010</td><td>Principal Investigator at Fundación Biofísica Bizkaia / Biofisika Bizkaia Fundazioa</td></tr>
+
+        <!-- JS will fill this -->
+        <tbody id="pastMembersTbody">
+          <tr><td colspan="2" class="muted">Loading…</td></tr>
         </tbody>
       </table>
     </section>
@@ -469,7 +460,6 @@
       const elName = document.getElementById("piName");
       const elRole = document.getElementById("piRole");
       const elCit = document.getElementById("piCitizenship");
-      const elArea = document.getElementById("piArea");
       const elSummary = document.getElementById("piSummary");
       const elEdu = document.getElementById("piEdu");
       const elLinks = document.getElementById("piLinks");
@@ -478,7 +468,6 @@
       if (elName) elName.textContent = pi.name || elName.textContent;
       if (elRole) elRole.textContent = pi.role || elRole.textContent;
       if (elCit) elCit.textContent = pi.citizenship || "—";
-      if (elArea) elArea.textContent = pi.area || "—";
       if (elSummary) elSummary.textContent = pi.summary || "—";
 
       if (elEdu) renderEduList(elEdu, pi.education || []);
@@ -498,6 +487,48 @@
       list.forEach(p => { if (p && p.id) PEOPLE[p.id] = p; });
     }
 
+    // ====== Past Members loaded from JSON ======
+    let PAST_MEMBERS = [];
+
+    async function loadPastMembers() {
+      const res = await fetch("content/people/past_members.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Could not load content/people/past_members.json");
+      const payload = await res.json();
+      PAST_MEMBERS = Array.isArray(payload?.past_members) ? payload.past_members : [];
+    }
+
+    function renderPastMembersTable() {
+      const tbody = document.getElementById("pastMembersTbody");
+      if (!tbody) return;
+
+      tbody.innerHTML = "";
+
+      if (!PAST_MEMBERS.length) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = 2;
+        td.className = "muted";
+        td.textContent = "No past members yet.";
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        return;
+      }
+
+      PAST_MEMBERS.forEach(row => {
+        const tr = document.createElement("tr");
+
+        const td1 = document.createElement("td");
+        td1.textContent = row?.name_role_year || "—";
+
+        const td2 = document.createElement("td");
+        td2.textContent = row?.current_position || "—";
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tbody.appendChild(tr);
+      });
+    }
+
     // ====== Init (wait for JSON before binding handlers) ======
     (async function initPeoplePage() {
       // Load PI, but don't break if it fails
@@ -515,6 +546,15 @@
         console.warn(e);
         PEOPLE = {};
       }
+
+      // Load past members table
+      try {
+        await loadPastMembers();
+      } catch (e) {
+        console.warn(e);
+        PAST_MEMBERS = [];
+      }
+      renderPastMembersTable();
 
       // ==== Modal logic ====
       const backdrop = document.getElementById("peopleModalBackdrop");
@@ -545,10 +585,7 @@
         mArea.textContent = p.area || "—";
         mSummary.textContent = p.summary || "—";
 
-        // Education list
         renderEduList(mEdu, p.education || []);
-
-        // Links
         renderLinks(mLinks, p.links || []);
 
         backdrop.classList.add("active");
@@ -618,18 +655,15 @@
           toggle.setAttribute("aria-expanded", String(isOpen));
         });
 
-        // Close when clicking a nav link (mobile UX)
         nav.querySelectorAll("a").forEach(a => {
           a.addEventListener("click", closeMenu);
         });
 
-        // Close when clicking outside
         document.addEventListener("click", (e) => {
           const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
           if (!clickedInside) closeMenu();
         });
 
-        // Close on ESC
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") closeMenu();
         });

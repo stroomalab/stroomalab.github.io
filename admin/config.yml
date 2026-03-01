@@ -79,7 +79,22 @@ collections:
                 fields:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "URL", name: "href", widget: "string" }
-
+  
+      - name: "past_members_data"
+        label: "Past Members"
+        files:
+          - name: "past_members"
+            label: "Past members table"
+            file: "content/people/past_members.json"
+            format: "json"
+            fields:
+              - label: "Past Members"
+                name: "past_members"
+                widget: "list"
+                summary: "{{fields.name_role_year}}"
+                fields:
+                  - { label: "Name (role), year", name: "name_role_year", widget: "string" }
+                  - { label: "Current position", name: "current_position", widget: "string" }
   # =========================
   # NEWS (single JSON file)
   # =========================
