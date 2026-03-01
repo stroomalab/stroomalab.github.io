@@ -120,11 +120,14 @@ collections:
         label: "Gallery images"
         file: "content/people/gallery.json"
         format: "json"
+
+        media_folder: "assets/gallery"
+        public_folder: "/assets/gallery"
+
         fields:
           - label: "images"
             name: "images"
             widget: "list"
-            summary: "{{fields.caption}}"
             fields:
               - { label: "Image file", name: "src", widget: "image" }
               - { label: "Caption", name: "caption", widget: "string", required: false }
