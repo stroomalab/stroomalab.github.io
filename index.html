@@ -8,6 +8,14 @@
   <link rel="icon" type="image/png" href="/favicon-48.png" sizes="48x48">
   <link rel="stylesheet" href="css/main.css" />
 </head>
+
+<script>
+  // If Netlify Identity OAuth lands on the homepage with tokens in the hash,
+  // forward them to Decap admin so it can finish the login.
+  if (window.location.hash && window.location.hash.includes("access_token=")) {
+    window.location.href = "/admin/" + window.location.hash;
+  }
+</script>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
