@@ -22,7 +22,6 @@ collections:
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Role", name: "role", widget: "string" }
           - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
-          - { label: "Research area", name: "area", widget: "string", required: false }
           - { label: "Photo", name: "avatar", widget: "image", required: false }
           - { label: "Summary", name: "summary", widget: "text", required: false }
 
