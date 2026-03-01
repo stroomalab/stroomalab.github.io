@@ -1,0 +1,145 @@
+/* =====================================================
+   RESEARCH PAGE (research.html)
+   Keep main.css for global layout and typography.
+   ===================================================== */
+
+/* ---------- Illustration figures inside cards ---------- */
+
+.illus{
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .illus img{
+    width: min(650px, 50vw);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 800px){
+    .illus img{ width: 100%; }
+  }
+  
+  /* ---------- OPTIONAL: research split layout (if used) ---------- */
+  
+  .research-split{
+    display: grid;
+    grid-template-columns: 0.6fr 0.4fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  
+  .research-split-figure{
+    align-self: start;
+    position: sticky;
+    top: 110px;
+  }
+  
+  .research-split-figure img{
+    width: min(420px, 40vw);
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    background: #fff;
+  }
+  
+  @media (max-width: 900px){
+    .research-split{ grid-template-columns: 1fr; }
+    .research-split-figure{ position: static; }
+    .research-split-figure img{
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+  
+  /* ---------- Expertise section ---------- */
+  
+  .expertise-intro{
+    margin-top: .3rem;
+    margin-bottom: 1.1rem;
+    max-width: 100%;
+  }
+  
+  /* 2-column layout (text + image) */
+  .expertise-split{
+    display: grid;
+    grid-template-columns: 0.72fr 0.28fr;
+    gap: 18px;
+    align-items: start;
+  }
+  
+  .expertise-left > p{
+    margin-top: 1rem;
+  }
+  
+  /* Notice alignment */
+  .expertise-left .notice{
+    margin-top: 0;
+  }
+  
+  /* Right-side figure */
+  .expertise-figure{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .expertise-figure img{
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 12px;
+  }
+  
+  /* Sticky figure on desktop */
+  @media (min-width: 980px){
+    .expertise-figure{
+      position: sticky;
+      top: 110px;
+    }
+  }
+  
+  /* Grid of expertise blocks */
+  .expertise-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 18px;
+  }
+  
+  .expertise-block{
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  
+  .expertise-block h4{
+    margin: 0 0 10px;
+    color: var(--green);
+    font-size: 1rem;
+  }
+  
+  .expertise-block ul{
+    margin: 0;
+    padding-left: 18px;
+  }
+  
+  /* Mobile: stack split */
+  @media (max-width: 900px){
+    .expertise-split{ grid-template-columns: 1fr; }
+    .expertise-figure img{ max-width: 100%; }
+  }
