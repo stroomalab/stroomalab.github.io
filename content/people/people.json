@@ -1,135 +1,204 @@
 {
-    "people": [
-      {
-        "id": "patricia-fernandez",
-        "group": "postdoc",
-        "name": "Patricia Fernández",
-        "role": "Postdoctoral researcher",
-        "citizenship": "Spain",
-        "area": "Area",
-        "avatar": "assets/people/patri.gif",
-        "summary": "Summary information.",
-        "education": [
-          { "degree": "PhD in Biomedicine", "institution": "University of Barcelona (Spain), 2016" },
-          { "degree": "M.Sc. in Biomedicine", "institution": "University of Barcelona (Spain), 2010" },
-          { "degree": "B.Sc. in Biochemistry", "institution": "Autonomous University of Barcelona (Spain), 2009" },
-          { "degree": "B.Sc. in Biology", "institution": "Autonomous University of Barcelona (Spain), 2008" }
-        ],
-        "links": [
-          { "label": "Email", "href": "mailto:pfernandezn@ub.edu" }
-        ]
-      },
-      {
-        "id": "marc-rico-pasto",
-        "group": "postdoc",
-        "name": "Marc Rico-Pastó",
-        "role": "Postdoctoral researcher",
-        "citizenship": "Spain",
-        "area": "Biophysics, Single-Molecule Physics, Cancer Mechanobiology",
-        "avatar": "assets/people/marc.gif",
-        "summary": "Marc Rico-Pastó is a postdoctoral researcher working at the interface of physics and biomedicine. His research focuses on single-molecule biophysics, feedback thermodynamics, and mechanobiology applied to cancer research. He studies the mechanical properties of lung cancer cells using force-spectroscopy techniques to understand tumor progression and metastasis. His previous work explored molecular folding, fluctuation theorems, and non-equilibrium thermodynamics through experimental and theoretical approaches.",
-        "education": [
-          { "degree": "PhD in Physics", "institution": "University of Barcelona (Spain), 2022" },
-          { "degree": "M.Sc. in Photonics", "institution": "Polytechnic University of Catalonia (Spain), 2014" },
-          { "degree": "B.Sc. in Physics", "institution": "University of Barcelona (Spain), 2013" }
-        ],
-        "links": [
-          { "label": "Email", "href": "mailto:mricopasto@ub.edu" }
-        ]
-      },
-      {
-        "id": "alejandro-bernardo",
-        "group": "grad",
-        "name": "Alejandro Bernardo Suarez",
-        "role": "Graduate student",
-        "citizenship": "Spain",
-        "area": "Area",
-        "avatar": "assets/people/berni.gif",
-        "summary": "Summary.",
-        "education": [
-          { "degree": "M.Sc. in Biomedical Research", "institution": "Pompeu Fabra University (Spain), 2021" },
-          { "degree": "B.Sc. in Biotechnology", "institution": "Universidad de Oviedo (Spain), 2020" }
-        ],
-        "links": [
-          { "label": "Email", "href": "mailto:abernardo@ub.edu" }
-        ]
-      },
-      {
-        "id": "victoria-batto",
-        "group": "grad",
-        "name": "Victoria Batto",
-        "role": "Graduate student",
-        "citizenship": "Argentina / Spain",
-        "area": "Tumor Microenvironment, Immunology, Lung Cancer Research",
-        "avatar": "assets/people/vicky.gif",
-        "summary": "Victoria Batto is a graduate researcher working on translational cancer research focused on the tumor microenvironment and the immunosuppressive role of tumor-associated fibroblasts in lung cancer. She combines experience from the pharmaceutical industry with strong training in molecular and cellular biology techniques, including immunology, virology, and functional cell assays.",
-        "education": [
-          { "degree": "M.Sc. in Biotechnology", "institution": "Universidad de Buenos Aires (Argentina), 2022" },
-          { "degree": "B.Sc. in Chemical Sciences", "institution": "Universidad de Buenos Aires (Argentina), 2017" }
-        ],
-        "links": [
-          { "label": "Email", "href": "mailto:victoriabatto@ub.edu" }
-        ]
-      },
-      {
-        "id": "teia-valles",
-        "group": "grad",
-        "name": "Teia Vallès",
-        "role": "Graduate student",
-        "citizenship": "Spain",
-        "area": "Cancer Biology, Breast Cancer Metastasis, Tumor Microenvironment",
-        "avatar": "assets/people/teia.jpeg",
-        "summary": "Teia Vallès is a predoctoral researcher focused on cancer biology and metastasis. Her research investigates how tumor-associated fibroblasts regulate invasion, migration, and survival of cancer cells, particularly in HER2+ breast cancer. She has research experience in international cancer laboratories and expertise in cell culture, organ-on-chip models, confocal microscopy, and molecular analysis techniques.",
-        "education": [
-          { "degree": "M.Sc. in TraBiomedicine", "institution": "University of Barcelona (Spain), 2024" },
-          { "degree": "B.Sc. in Biomedical Sciences", "institution": "University of Barcelona (Spain), 2023" }
-        ],
-        "links": [
-          { "label": "Email", "href": "mailto:tvalles@ub.edu" }
-        ]
-      },
-      {
-        "id": "laura-lopez",
-        "group": "assoc",
-        "name": "Laura López",
-        "role": "Associated profile",
-        "citizenship": "Spain",
-        "area": "Pathology; thoracic tumors",
-        "avatar": "assets/people/lauralopez.png",
-        "summary": "Pathologist associated with the lab, collaborating on translational studies and tissue-based characterization.",
-        "education": [],
-        "links": []
-      },
-      {
-        "id": "jose-rodriguez",
-        "group": "assoc",
-        "name": "José Rodríguez",
-        "role": "Associated profile",
-        "citizenship": "Costa Rica",
-        "area": "Digital Pathology automation",
-        "avatar": "assets/people/joserodriguez.png",
-        "summary": "Medical image computing engineer specializing in quantitative medical imaging, AI-driven analysis, and research software development. His work focuses on building image processing pipelines for biomedical applications, including histopathology segmentation, registration and feature extraction. He combines experience in medical device R&D, regulatory environments, and interdisciplinary collaboration to translate computational methods into practical healthcare solutions.",
-        "education": [
-          { "degree": "M.Sc. in Medical Image Computing", "institution": "Universitat de Girona (Spain), 2025" },
-          { "degree": "M.Sc. in Computer Engineering", "institution": "Università degli Studi di Cassino (Italy), 2025" },
-          { "degree": "M.Sc. in Design and Management of Technological Projects", "institution": "Universidad Internacional de La Rioja (Mexico), 2021" },
-          { "degree": "B.Sc. in Mechatronics Engineering", "institution": "Costa Rica Institute of Technology (C.R), 2019" }
-        ],
-        "links": [
-          { "label": "Email", "href": "mailto:juaco2r@gmail.com" }
-        ]
-      },
-      {
-        "id": "nanthilde-malandain",
-        "group": "assoc",
-        "name": "Nanthilde Malandain",
-        "role": "Associated profile",
-        "citizenship": "",
-        "area": "Tissue nanomechanics",
-        "avatar": "assets/people/nanthilde.png",
-        "summary": "Collaborates on tissue nanomechanics and mechanobiology questions, linking physical measurements with biology.",
-        "education": [],
-        "links": []
-      }
-    ]
-  }
+  "people": [
+    {
+      "citizenship": "Spain",
+      "summary": "Summary information...",
+      "education": [
+        {
+          "degree": "PhD in Biomedicine",
+          "institution": "University of Barcelona (Spain), 2016"
+        },
+        {
+          "degree": "M.Sc. in Biomedicine",
+          "institution": "University of Barcelona (Spain), 2010"
+        },
+        {
+          "degree": "B.Sc. in Biochemistry",
+          "institution": "Autonomous University of Barcelona (Spain), 2009"
+        },
+        {
+          "degree": "B.Sc. in Biology",
+          "institution": "Autonomous University of Barcelona (Spain), 2008"
+        }
+      ],
+      "name": "Patricia Fernández",
+      "area": "Area",
+      "role": "Postdoctoral researcher",
+      "avatar": "assets/people/patri.gif",
+      "links": [
+        {
+          "label": "Email",
+          "href": "mailto:pfernandezn@ub.edu"
+        }
+      ],
+      "id": "patricia-fernandez",
+      "group": "postdoc"
+    },
+    {
+      "citizenship": "Spain",
+      "summary": "Marc Rico-Pastó is a postdoctoral researcher working at the interface of physics and biomedicine. His research focuses on single-molecule biophysics, feedback thermodynamics, and mechanobiology applied to cancer research. He studies the mechanical properties of lung cancer cells using force-spectroscopy techniques to understand tumor progression and metastasis. His previous work explored molecular folding, fluctuation theorems, and non-equilibrium thermodynamics through experimental and theoretical approaches.",
+      "education": [
+        {
+          "degree": "PhD in Physics",
+          "institution": "University of Barcelona (Spain), 2022"
+        },
+        {
+          "degree": "M.Sc. in Photonics",
+          "institution": "Polytechnic University of Catalonia (Spain), 2014"
+        },
+        {
+          "degree": "B.Sc. in Physics",
+          "institution": "University of Barcelona (Spain), 2013"
+        }
+      ],
+      "name": "Marc Rico-Pastó",
+      "area": "Biophysics, Single-Molecule Physics, Cancer Mechanobiology",
+      "role": "Postdoctoral researcher",
+      "avatar": "assets/people/marc.gif",
+      "links": [
+        {
+          "label": "Email",
+          "href": "mailto:mricopasto@ub.edu"
+        }
+      ],
+      "id": "marc-rico-pasto",
+      "group": "postdoc"
+    },
+    {
+      "citizenship": "Spain",
+      "summary": "Summary.",
+      "education": [
+        {
+          "degree": "M.Sc. in Biomedical Research",
+          "institution": "Pompeu Fabra University (Spain), 2021"
+        },
+        {
+          "degree": "B.Sc. in Biotechnology",
+          "institution": "Universidad de Oviedo (Spain), 2020"
+        }
+      ],
+      "name": "Alejandro Bernardo Suarez",
+      "area": "Area",
+      "role": "Graduate student",
+      "avatar": "assets/people/berni.gif",
+      "links": [
+        {
+          "label": "Email",
+          "href": "mailto:abernardo@ub.edu"
+        }
+      ],
+      "id": "alejandro-bernardo",
+      "group": "grad"
+    },
+    {
+      "citizenship": "Argentina / Spain",
+      "summary": "Victoria Batto is a graduate researcher working on translational cancer research focused on the tumor microenvironment and the immunosuppressive role of tumor-associated fibroblasts in lung cancer. She combines experience from the pharmaceutical industry with strong training in molecular and cellular biology techniques, including immunology, virology, and functional cell assays.",
+      "education": [
+        {
+          "degree": "M.Sc. in Biotechnology",
+          "institution": "Universidad de Buenos Aires (Argentina), 2022"
+        },
+        {
+          "degree": "B.Sc. in Chemical Sciences",
+          "institution": "Universidad de Buenos Aires (Argentina), 2017"
+        }
+      ],
+      "name": "Victoria Batto",
+      "area": "Tumor Microenvironment, Immunology, Lung Cancer Research",
+      "role": "Graduate student",
+      "avatar": "assets/people/vicky.gif",
+      "links": [
+        {
+          "label": "Email",
+          "href": "mailto:victoriabatto@ub.edu"
+        }
+      ],
+      "id": "victoria-batto",
+      "group": "grad"
+    },
+    {
+      "citizenship": "Spain",
+      "summary": "Teia Vallès is a predoctoral researcher focused on cancer biology and metastasis. Her research investigates how tumor-associated fibroblasts regulate invasion, migration, and survival of cancer cells, particularly in HER2+ breast cancer. She has research experience in international cancer laboratories and expertise in cell culture, organ-on-chip models, confocal microscopy, and molecular analysis techniques.",
+      "education": [
+        {
+          "degree": "M.Sc. in TraBiomedicine",
+          "institution": "University of Barcelona (Spain), 2024"
+        },
+        {
+          "degree": "B.Sc. in Biomedical Sciences",
+          "institution": "University of Barcelona (Spain), 2023"
+        }
+      ],
+      "name": "Teia Vallès",
+      "area": "Cancer Biology, Breast Cancer Metastasis, Tumor Microenvironment",
+      "role": "Graduate student",
+      "avatar": "assets/people/teia.jpeg",
+      "links": [
+        {
+          "label": "Email",
+          "href": "mailto:tvalles@ub.edu"
+        }
+      ],
+      "id": "teia-valles",
+      "group": "grad"
+    },
+    {
+      "citizenship": "Spain",
+      "summary": "Pathologist associated with the lab, collaborating on translational studies and tissue-based characterization.",
+      "education": [],
+      "name": "Laura López",
+      "area": "Pathology; thoracic tumors",
+      "role": "Associated profile",
+      "avatar": "assets/people/lauralopez.png",
+      "links": [],
+      "id": "laura-lopez",
+      "group": "assoc"
+    },
+    {
+      "citizenship": "Costa Rica",
+      "summary": "Medical image computing engineer specializing in quantitative medical imaging, AI-driven analysis, and research software development. His work focuses on building image processing pipelines for biomedical applications, including histopathology segmentation, registration and feature extraction. He combines experience in medical device R&D, regulatory environments, and interdisciplinary collaboration to translate computational methods into practical healthcare solutions.",
+      "education": [
+        {
+          "degree": "M.Sc. in Medical Image Computing",
+          "institution": "Universitat de Girona (Spain), 2025"
+        },
+        {
+          "degree": "M.Sc. in Computer Engineering",
+          "institution": "Università degli Studi di Cassino (Italy), 2025"
+        },
+        {
+          "degree": "M.Sc. in Design and Management of Technological Projects",
+          "institution": "Universidad Internacional de La Rioja (Mexico), 2021"
+        },
+        {
+          "degree": "B.Sc. in Mechatronics Engineering",
+          "institution": "Costa Rica Institute of Technology (C.R), 2019"
+        }
+      ],
+      "name": "José Rodríguez",
+      "area": "Digital Pathology automation",
+      "role": "Associated profile",
+      "avatar": "assets/people/joserodriguez.png",
+      "links": [
+        {
+          "label": "Email",
+          "href": "mailto:juaco2r@gmail.com"
+        }
+      ],
+      "id": "jose-rodriguez",
+      "group": "assoc"
+    },
+    {
+      "citizenship": "",
+      "summary": "Collaborates on tissue nanomechanics and mechanobiology questions, linking physical measurements with biology.",
+      "education": [],
+      "name": "Nanthilde Malandain",
+      "area": "Tissue nanomechanics",
+      "role": "Associated profile",
+      "avatar": "assets/people/nanthilde.png",
+      "links": [],
+      "id": "nanthilde-malandain",
+      "group": "assoc"
+    }
+  ]
+}
