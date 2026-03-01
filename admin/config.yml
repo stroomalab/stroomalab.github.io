@@ -1,0 +1,99 @@
+backend:
+  name: github
+  repo: TU_USUARIO/TU_REPO   # <-- CAMBIA ESTO por "owner/repo"
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  # =========================
+  # PEOPLE (single JSON file)
+  # =========================
+  - name: "people_data"
+    label: "People"
+    files:
+      - name: "people"
+        label: "People list"
+        file: "content/people/people.json"
+        format: "json"
+        fields:
+          - label: "People"
+            name: "people"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "ID (must match data-person)", name: "id", widget: "string" }
+
+              - label: "Group"
+                name: "group"
+                widget: "select"
+                options:
+                  - { label: "Postdoctoral researchers", value: "postdoc" }
+                  - { label: "Graduate students", value: "grad" }
+                  - { label: "Associated profiles", value: "assoc" }
+
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Citizenship", name: "citizenship", widget: "string", required: false }
+              - { label: "Research area", name: "area", widget: "string", required: false }
+              - { label: "Photo", name: "avatar", widget: "image", required: false }
+              - { label: "Summary", name: "summary", widget: "text", required: false }
+
+              - label: "Education"
+                name: "education"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Degree", name: "degree", widget: "string", required: false }
+                  - { label: "Institution", name: "institution", widget: "string", required: false }
+
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "href", widget: "string" }
+
+  # =========================
+  # NEWS (single JSON file)
+  # =========================
+  - name: "news_data"
+    label: "News"
+    files:
+      - name: "news"
+        label: "News list"
+        file: "content/news/news.json"
+        format: "json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+              - { label: "URL", name: "url", widget: "string" }
+
+  # =========================
+  # RESOURCES (single JSON file)
+  # =========================
+  - name: "resources_data"
+    label: "Resources"
+    files:
+      - name: "resources"
+        label: "Resources list"
+        file: "content/resources/resources.json"
+        format: "json"
+        fields:
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            summary: "{{fields.section}} — {{fields.title}}"
+            fields:
+              - { label: "Section (e.g., teaching, outreach)", name: "section", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }

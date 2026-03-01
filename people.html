@@ -13,12 +13,12 @@
 
   <header class="topbar">
     <div class="container nav-wrap">
-  
+
       <a class="brand" href="index.html">
         <span class="brand-badge" aria-hidden="true">
           <img src="assets/StroomaLabIco.png" alt="" />
         </span>
-  
+
         <div class="brand-name">
           Strooma<span class="brand-accent">Lab</span>
         </div>
@@ -28,7 +28,7 @@
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
         ☰
       </button>
-  
+
       <nav class="navlinks" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
@@ -37,7 +37,7 @@
         <a href="resources.html">Resources</a>
         <a href="contact.html">Contact</a>
       </nav>
-  
+
     </div>
   </header>
 
@@ -56,7 +56,7 @@
           <img class="pi-avatar" src="assets/people/jordi.png" alt="Jordi Alcaraz" loading="lazy">
           <div style="min-width:0">
             <h3>Jordi Alcaraz</h3>
-            <p>Principal Investigator </p>
+            <p>Principal Investigator</p>
             <div class="link-row" style="margin-top:10px">
               <a class="chip" href="mailto:jalcaraz@ub.edu">Email</a>
               <a class="chip" href="https://orcid.org/0000-0001-7898-1599" target="_blank" rel="noopener">ORCID</a>
@@ -93,12 +93,12 @@
                 <div class="degree">Ph.D. in Biophysics</div>
                 <div class="institution">University of Barcelona (Spain), 2002</div>
               </li>
-            
+
               <li>
                 <div class="degree">M.Sc. in Cell Physiology</div>
                 <div class="institution">University of Barcelona (Spain), 2000</div>
               </li>
-            
+
               <li>
                 <div class="degree">B.Sc. in Physics</div>
                 <div class="institution">University of Barcelona (Spain), 1997</div>
@@ -112,90 +112,25 @@
     <!-- ===== Postdocs ===== -->
     <section class="card">
       <h2 class="section-title"><span>Postdoctoral</span> Researchers</h2>
-
-      <div class="people-grid">
-        <button class="person-tile" type="button" data-person="patricia-fernandez">
-          <img class="avatar" src="assets/people/patri.gif" alt="Patricia Fernández" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Patricia Fernández</p>
-            <p class="tile-role">Postdoctoral researcher</p>
-            <p class="tile-area">Area</p>
-          </div>
-        </button>
-
-        <button class="person-tile" type="button" data-person="marc-rico-pasto">
-          <img class="avatar" src="assets/people/marc.gif" alt="Marc Rico-Pastó" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Marc Rico-Pastó</p>
-            <p class="tile-role">Postdoctoral researcher</p>
-            <p class="tile-area">Area</p>
-          </div>
-        </button>
-      </div>
+      <div class="people-grid" id="grid-postdoc"></div>
+      <p class="muted" id="empty-postdoc" style="display:none; margin-top:10px;">No entries yet.</p>
     </section>
 
     <!-- ===== Graduate students ===== -->
     <section class="card">
       <h2 class="section-title"><span>Graduate</span> students (director/tutor)</h2>
-
-      <div class="people-grid">
-        <button class="person-tile" type="button" data-person="alejandro-bernardo">
-          <img class="avatar" src="assets/people/berni.gif" alt="Alejandro Bernardo Suarez" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Alejandro Bernardo Suarez</p>
-            <p class="tile-role">Graduate student</p>
-            <p class="tile-area">Area</p>
-          </div>
-        </button>
-
-        <button class="person-tile" type="button" data-person="victoria-batto">
-          <img class="avatar" src="assets/people/vicky.gif" alt="Victoria Batto" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Victoria Batto</p>
-            <p class="tile-role">Graduate student</p>
-            <p class="tile-area">Area</p>
-          </div>
-        </button>
-
-        <button class="person-tile" type="button" data-person="teia-valles">
-          <img class="avatar" src="assets/people/teia.jpeg" alt="Teia Vallès" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Teia Vallès</p>
-            <p class="tile-role">Graduate student</p>
-            <p class="tile-area">Area</p>
-          </div>
-        </button>
-
-        <button class="person-tile" type="button" data-person="laura-lopez">
-          <img class="avatar" src="assets/people/lauralopez.png" alt="Laura López" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Laura López</p>
-            <p class="tile-role">Associated profile</p>
-            <p class="tile-area">Pathology • Thoracic tumors</p>
-          </div>
-        </button>
-
-        <button class="person-tile" type="button" data-person="jose-rodriguez">
-          <img class="avatar" src="assets/people/joserodriguez.png" alt="José Rodríguez" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">José Rodríguez</p>
-            <p class="tile-role">Associated profile</p>
-            <p class="tile-area">Medical imaging • Computing</p>
-          </div>
-        </button>
-
-        <button class="person-tile" type="button" data-person="nanthilde-malandain">
-          <img class="avatar" src="assets/people/nanthilde.png" alt="Nanthilde Malandain" loading="lazy">
-          <div class="tile-meta">
-            <p class="tile-name">Nanthilde Malandain</p>
-            <p class="tile-role">Associated profile</p>
-            <p class="tile-area">Tissue nanomechanics</p>
-          </div>
-        </button>
-      </div>
+      <div class="people-grid" id="grid-grad"></div>
+      <p class="muted" id="empty-grad" style="display:none; margin-top:10px;">No entries yet.</p>
     </section>
 
-    <!-- ===== Past members ===== -->
+    <!-- ===== Associated profiles ===== -->
+    <section class="card">
+      <h2 class="section-title"><span>Associated</span> profiles</h2>
+      <div class="people-grid" id="grid-assoc"></div>
+      <p class="muted" id="empty-assoc" style="display:none; margin-top:10px;">No entries yet.</p>
+    </section>
+
+    <!-- ===== Past members (kept static for now) ===== -->
     <section class="card">
       <h2 class="section-title"><span>Past</span> Members</h2>
 
@@ -223,7 +158,7 @@
       </table>
     </section>
 
-    <!-- ===== Group Pictures gallery (your original) ===== -->
+    <!-- ===== Group Pictures gallery (unchanged) ===== -->
     <section class="card">
       <h2 class="section-title">Group Pictures</h2>
       <p class="lead">Lab events, meetings, and celebrations.</p>
@@ -328,7 +263,6 @@
         <div class="panel">
           <h4>Summary</h4>
           <p id="peopleModalSummary" style="margin:0;"></p>
-
           <div class="link-row" id="peopleModalLinks" aria-label="External links"></div>
         </div>
 
@@ -346,369 +280,309 @@
     </div>
   </div>
 
-  <!-- ===== Gallery lightbox (your original) ===== -->
+  <!-- ===== Gallery lightbox (unchanged) ===== -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <img src="" alt="">
   </div>
 
+  <footer class="footer footer-pro">
+    <div class="container">
+      <div class="footer-inner">
+
+        <a href="https://www.ub.edu/" target="_blank" rel="noopener" aria-label="University of Barcelona website">
+          <img class="footer-logo" src="assets/universitat_icon.png" alt="University of Barcelona logo" loading="lazy">
+        </a>
+
+        <p class="footer-text">Department of Biomedicine — University of Barcelona</p>
+        <p class="footer-copy">© <span id="year"></span> StroomaLab</p>
+
+      </div>
+    </div>
+  </footer>
+
   <script>
-    // ==== People data (EDIT HERE) ====
-    const PEOPLE = {
-      // NOTE: PI is shown as fixed card above (not using modal)
-      "jordi-alcaraz": {
-        name: "Jordi Alcaraz",
-        role: "Principal Investigator",
-        avatar: "assets/people/jordi.png",
-        citizenship: "Spain",
-        area: "Mechanobiology; tumor microenvironment; fibroblast biology",
-        education: [
-          "Ph.D. in Biophysics, University of Barcelona (Spain), 2002",
-          "M.Sc. in Cell Physiology, University of Barcelona (Spain), 2000",
-          "B.Sc. in Physics, University of Barcelona (Spain), 1997"
-        ],
-        summary:
-          "Jordi is a Serra-Húnter Associate Professor in the School of Medicine at the University of Barcelona (UB) since 2016. He graduated in Physics in 1997 at the UB, and attended graduate school at the same university, where he obtained his Ph.D. in the fields of Cellular Biophysics and Nanobioengineering in 2002. From 2002 until 2007 he was a joint postdoc between the Cancer Biology Laboratory of Dr Mina J Bissell at the Lawrence Berkeley National Laboratory and the Single Molecule Biophysics Laboratory of Prof Carlos Bustamante at UC Berkeley. During his postdoc he pursued research aiming to understand how biophysical cues from the tissue microenvironment control differentiation and cancer progression at the single cell level. He is also an associate group leader at the Institute for Bioengineering of Catalonia (IBEC) and a core member of the Functional Unit of Thoracic Tumors at the Hospital Clinic de Barcelona.",
-        links: [
-          { label: "ORCID", href: "https://orcid.org/0000-0001-7898-1599" },
-          { label: "LinkedIn", href: "https://www.linkedin.com/in/jordi-alcaraz-48a05310/" },
-          { label: "Google Scholar", href: "https://scholar.google.com/citations?hl=en&user=Qkr8LE4AAAAJ&view_op=list_works&sortby=pubdate" },
-          { label: "Email", href: "mailto:jalcaraz@ub.edu" }
-        ]
-      },
-
-      "patricia-fernandez": {
-        name: "Patricia Fernández",
-        role: "Postdoctoral researcher",
-        avatar: "assets/people/patri.gif",
-        citizenship: "Spain",
-        area: "Area",
-        education: [
-          { degree: "PhD in Biomedicine", institution: "University of Barcelona (Spain), 2016" },
-          { degree: "M.Sc. in Biomedicine", institution: "University of Barcelona (Spain), 2010" },
-          { degree: "B.Sc. in Biochemistry", institution: "Autonomous University of Barcelona (Spain), 2009" },
-          { degree: "B.Sc. in Biology", institution: "Autonomous University of Barcelona (Spain), 2008" }
-        ],
-        summary: "Summary.",
-        links: [
-          { label: "Email", href: "mailto:pfernandezn@ub.edu" }
-        ]
-      },
-
-      "marc-rico-pasto": {
-        name: "Marc Rico-Pastó",
-        role: "Postdoctoral researcher",
-        avatar: "assets/people/marc.gif",
-        citizenship: "Spain",
-        area: "Biophysics, Single-Molecule Physics, Cancer Mechanobiology",
-        education: [
-          { degree: "PhD in Physics", institution: "University of Barcelona (Spain), 2022" },
-          { degree: "M.Sc. in Photonics", institution: "Polytechnic University of Catalonia (Spain), 2014" },
-          { degree: "B.Sc. in Physics", institution: "University of Barcelona (Spain), 2013" }
-        ],
-        summary:
-          "Marc Rico-Pastó is a postdoctoral researcher working at the interface of physics and biomedicine. His research focuses on single-molecule biophysics, feedback thermodynamics, and mechanobiology applied to cancer research. He studies the mechanical properties of lung cancer cells using force-spectroscopy techniques to understand tumor progression and metastasis. His previous work explored molecular folding, fluctuation theorems, and non-equilibrium thermodynamics through experimental and theoretical approaches.",
-        links: [
-          { label: "Email", href: "mailto:mricopasto@ub.edu" }
-        ]
-      },
-
-      "alejandro-bernardo": {
-        name: "Alejandro Bernardo Suarez",
-        role: "Graduate student",
-        avatar: "assets/people/berni.gif",
-        citizenship: "Spain",
-        area: "Area",
-        education: [
-          { degree: "M.Sc. in Biomedical Research", institution: "Pompeu Fabra University (Spain), 2021" },
-          { degree: "B.Sc. in Biotechnology", institution: "Universidad de Oviedo (Spain), 2020" }
-        ],
-        summary: "Summary.",
-        links: [
-          { label: "Email", href: "mailto:abernardo@ub.edu" }
-        ]
-      },
-
-      "victoria-batto": {
-        name: "Victoria Batto",
-        role: "Graduate student",
-        avatar: "assets/people/vicky.gif",
-        citizenship: "Argentina / Spain",
-        area: "Tumor Microenvironment, Immunology, Lung Cancer Research",
-        education: [
-          { degree: "M.Sc. in Biotechnology", institution: "Universidad de Buenos Aires (Argentina), 2022" },
-          { degree: "B.Sc. in Chemical Sciences", institution: "Universidad de Buenos Aires (Argentina), 2017" }
-        ],
-        summary:
-          "Victoria Batto is a graduate researcher working on translational cancer research focused on the tumor microenvironment and the immunosuppressive role of tumor-associated fibroblasts in lung cancer. She combines experience from the pharmaceutical industry with strong training in molecular and cellular biology techniques, including immunology, virology, and functional cell assays.",
-        links: [
-          { label: "Email", href: "mailto:victoriabatto@ub.edu" }
-        ]
-      },
-
-      "teia-valles": {
-        name: "Teia Vallès",
-        role: "Graduate student",
-        avatar: "assets/people/teia.gif",
-        citizenship: "Spain",
-        area: "Cancer Biology, Breast Cancer Metastasis, Tumor Microenvironment",
-        education: [
-          { degree: "M.Sc. in TraBiomedicine", institution: "University of Barcelona (Spain), 2024" },
-          { degree: "B.Sc. in Biomedical Sciences", institution: "University of Barcelona (Spain), 2023" }
-        ],
-        summary:
-          "Teia Vallès is a predoctoral researcher focused on cancer biology and metastasis. Her research investigates how tumor-associated fibroblasts regulate invasion, migration, and survival of cancer cells, particularly in HER2+ breast cancer. She has research experience in international cancer laboratories and expertise in cell culture, organ-on-chip models, confocal microscopy, and molecular analysis techniques.",
-        links: [
-          { label: "Email", href: "mailto:tvalles@ub.edu" }
-        ]
-      },
-
-      "laura-lopez": {
-        name: "Laura López",
-        role: "Associated profile",
-        avatar: "assets/people/lauralopez.png",
-        citizenship: "Spain",
-        area: "Pathology; thoracic tumors",
-        education: [],
-        summary:
-          "Pathologist associated with the lab, collaborating on translational studies and tissue-based characterization.",
-        links: []
-      },
-
-      "jose-rodriguez": {
-        name: "José Rodríguez",
-        role: "Associated profile",
-        avatar: "assets/people/joserodriguez.png",
-        citizenship: "Costa Rica",
-        area: "Digital Pathology automation",
-        education: [
-          { degree: "M.Sc. in Medical Image Computing", institution: "Universitat de Girona (Spain), 2025" },
-          { degree: "M.Sc. in Computer Engineering", institution: "Università degli Studi di Cassino (Italy), 2025" },
-          { degree: "M.Sc. in Design and Management of Technological Projects", institution: "Universidad Internacional de La Rioja (Mexico), 2021" },
-          { degree: "B.Sc. in Mechatronics Engineering", institution: "Costa Rica Institute of Technology (C.R), 2019" }
-        ],
-        summary:
-          "Medical image computing engineer specializing in quantitative medical imaging, AI-driven analysis, and research software development. His work focuses on building image processing pipelines for biomedical applications, including histopathology segmentation, registration and feature extraction. He combines experience in medical device R&D, regulatory environments, and interdisciplinary collaboration to translate computational methods into practical healthcare solutions.",
-        links: [
-          { label: "Email", href: "mailto:juaco2r@gmail.com" }
-        ]
-      },
-
-      "nanthilde-malandain": {
-        name: "Nanthilde Malandain",
-        role: "Associated profile",
-        avatar: "assets/people/nanthilde.png",
-        citizenship: "",
-        area: "Tissue nanomechanics",
-        education: [],
-        summary:
-          "Collaborates on tissue nanomechanics and mechanobiology questions, linking physical measurements with biology.",
-        links: []
-      }
-    };
-
-    // ==== Modal logic ====
-    const backdrop = document.getElementById("peopleModalBackdrop");
-    const closeBtn = document.getElementById("peopleModalClose");
-
-    const mAvatar = document.getElementById("peopleModalAvatar");
-    const mName = document.getElementById("peopleModalName");
-    const mRole = document.getElementById("peopleModalRole");
-    const mCit = document.getElementById("peopleModalCitizenship");
-    const mArea = document.getElementById("peopleModalArea");
-    const mSummary = document.getElementById("peopleModalSummary");
-    const mEdu = document.getElementById("peopleModalEdu");
-    const mLinks = document.getElementById("peopleModalLinks");
-
-    let lastActive = null;
-
-    function openModal(personId) {
-      const p = PEOPLE[personId];
-      if (!p) return;
-
-      // PI is fixed card; do not open modal for PI
-      if (personId === "jordi-alcaraz") return;
-
-      lastActive = document.activeElement;
-
-      mAvatar.src = p.avatar || "";
-      mAvatar.alt = p.name || "Portrait";
-      mName.textContent = p.name || "";
-      mRole.textContent = p.role || "";
-      mCit.textContent = p.citizenship || "—";
-      mArea.textContent = p.area || "—";
-      mSummary.textContent = p.summary || "—";
-
-      // Education list
-      mEdu.innerHTML = "";
-      const edu = (p.education || []).filter(Boolean);
-      if (edu.length === 0) {
-        const li = document.createElement("li");
-        li.textContent = "—";
-        mEdu.appendChild(li);
-      } else {
-        // Education list
-      mEdu.innerHTML = "";
-      const edu = (p.education || []).filter(Boolean);
-
-      if (edu.length === 0) {
-        const li = document.createElement("li");
-        li.textContent = "—";
-        mEdu.appendChild(li);
-      } else {
-        edu.forEach(item => {
-          const li = document.createElement("li");
-
-          // Backward compatible: if item is still a string
-          if (typeof item === "string") {
-            const [deg, ...rest] = item.split(",");
-            const degreeText = (deg || "").trim();
-            const instText = rest.join(",").trim();
-
-            const d = document.createElement("div");
-            d.className = "degree";
-            d.textContent = degreeText || item;
-
-            li.appendChild(d);
-
-            if (instText) {
-              const inst = document.createElement("div");
-              inst.className = "institution";
-              inst.textContent = instText;
-              li.appendChild(inst);
-            }
-          } else {
-            const d = document.createElement("div");
-            d.className = "degree";
-            d.textContent = item.degree || "—";
-
-            const inst = document.createElement("div");
-            inst.className = "institution";
-            inst.textContent = item.institution || "—";
-
-            li.appendChild(d);
-            li.appendChild(inst);
-          }
-
-          mEdu.appendChild(li);
-        });
-      }
-      }
-
-      // Links
-      mLinks.innerHTML = "";
-      (p.links || []).forEach(l => {
-        const a = document.createElement("a");
-        a.className = "chip";
-        a.href = l.href;
-        a.target = l.href.startsWith("mailto:") ? "_self" : "_blank";
-        a.rel = l.href.startsWith("mailto:") ? "" : "noopener";
-        a.textContent = l.label;
-        mLinks.appendChild(a);
-      });
-
-      backdrop.classList.add("active");
-      backdrop.setAttribute("aria-hidden", "false");
-      closeBtn.focus();
-    }
-
-    function closeModal() {
-      backdrop.classList.remove("active");
-      backdrop.setAttribute("aria-hidden", "true");
-      if (lastActive && typeof lastActive.focus === "function") lastActive.focus();
-    }
-
-    document.querySelectorAll("[data-person]").forEach(btn => {
-      btn.addEventListener("click", () => openModal(btn.dataset.person));
-    });
-
-    closeBtn.addEventListener("click", closeModal);
-
-    backdrop.addEventListener("click", (e) => {
-      if (e.target === backdrop) closeModal();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && backdrop.classList.contains("active")) closeModal();
-    });
-
-    // ==== Gallery lightbox (your original) ====
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-
-    document.querySelectorAll('.gallery a[data-full]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        lightboxImg.src = link.dataset.full;
-        lightbox.classList.add('active');
-        lightbox.setAttribute('aria-hidden', 'false');
-      });
-    });
-
-    const closeLightbox = () => {
-      lightbox.classList.remove('active');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lightboxImg.src = '';
-    };
-
-    lightbox.addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-<footer class="footer footer-pro">
-  <div class="container">
-    <div class="footer-inner">
+  <script>
+    // ====== People loaded from JSON (manager edits content/people/people.json) ======
+    let PEOPLE = {};
 
-      <a href="https://www.ub.edu/" target="_blank" rel="noopener" aria-label="University of Barcelona website">
-        <img class="footer-logo" src="assets/universitat_icon.png" alt="University of Barcelona logo" loading="lazy">
-      </a>
-
-      <p class="footer-text">Department of Biomedicine — University of Barcelona</p>
-      <p class="footer-copy">© <span id="year"></span> StroomaLab</p>
-
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-<script>
-  (function () {
-    const toggle = document.querySelector(".nav-toggle");
-    const nav = document.querySelector(".navlinks");
-
-    if (!toggle || !nav) return;
-
-    function closeMenu() {
-      nav.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
+    function normalizePeoplePayload(payload) {
+      // Accept:
+      // 1) { "people": [ ... ] }  (Netlify CMS "files" collection style)
+      // 2) [ ... ]               (simple array)
+      // 3) { "id": {...}, ... }  (object keyed by id)
+      if (payload && typeof payload === "object" && Array.isArray(payload.people)) {
+        return payload.people;
+      }
+      if (Array.isArray(payload)) return payload;
+      if (payload && typeof payload === "object") {
+        // convert keyed object to array
+        return Object.entries(payload).map(([id, v]) => ({ id, ...(v || {}) }));
+      }
+      return [];
     }
 
-    toggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    async function loadPeople() {
+      const res = await fetch("content/people/people.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Could not load content/people/people.json");
+      const payload = await res.json();
+      const list = normalizePeoplePayload(payload);
 
-    // Close when clicking a nav link (mobile UX)
-    nav.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", closeMenu);
-    });
+      PEOPLE = {};
+      list.forEach(p => {
+        if (p && p.id) PEOPLE[p.id] = p;
+      });
+    }
 
-    // Close when clicking outside
-    document.addEventListener("click", (e) => {
-      const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
-      if (!clickedInside) closeMenu();
-    });
+    function esc(s) {
+      return String(s ?? "");
+    }
 
-    // Close on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-  })();
-</script>
+    function renderTile(p) {
+      const btn = document.createElement("button");
+      btn.className = "person-tile";
+      btn.type = "button";
+      btn.dataset.person = p.id;
+
+      const img = document.createElement("img");
+      img.className = "avatar";
+      img.loading = "lazy";
+      img.src = p.avatar || "assets/people/placeholder.png"; // optional placeholder
+      img.alt = p.name ? esc(p.name) : "Portrait";
+
+      const meta = document.createElement("div");
+      meta.className = "tile-meta";
+
+      const name = document.createElement("p");
+      name.className = "tile-name";
+      name.textContent = p.name || "—";
+
+      const role = document.createElement("p");
+      role.className = "tile-role";
+      role.textContent = p.role || "—";
+
+      const area = document.createElement("p");
+      area.className = "tile-area";
+      area.textContent = p.area || "";
+
+      meta.appendChild(name);
+      meta.appendChild(role);
+      meta.appendChild(area);
+
+      btn.appendChild(img);
+      btn.appendChild(meta);
+
+      return btn;
+    }
+
+    function renderGroup(groupKey, gridId, emptyId) {
+      const grid = document.getElementById(gridId);
+      const empty = document.getElementById(emptyId);
+      if (!grid) return;
+
+      grid.innerHTML = "";
+
+      const list = Object.values(PEOPLE)
+        .filter(p => (p?.group || "") === groupKey);
+
+      if (list.length === 0) {
+        if (empty) empty.style.display = "block";
+        return;
+      }
+      if (empty) empty.style.display = "none";
+
+      // simple stable sort by name
+      list.sort((a, b) => (a.name || "").localeCompare(b.name || "", undefined, { sensitivity: "base" }));
+
+      list.forEach(p => grid.appendChild(renderTile(p)));
+    }
+
+    (async function initPeoplePage() {
+      try {
+        await loadPeople();
+      } catch (e) {
+        console.warn(e);
+        PEOPLE = {};
+      }
+
+      // Render tiles automatically
+      renderGroup("postdoc", "grid-postdoc", "empty-postdoc");
+      renderGroup("grad", "grid-grad", "empty-grad");
+      renderGroup("assoc", "grid-assoc", "empty-assoc");
+
+      // ==== Modal logic ====
+      const backdrop = document.getElementById("peopleModalBackdrop");
+      const closeBtn = document.getElementById("peopleModalClose");
+
+      const mAvatar = document.getElementById("peopleModalAvatar");
+      const mName = document.getElementById("peopleModalName");
+      const mRole = document.getElementById("peopleModalRole");
+      const mCit = document.getElementById("peopleModalCitizenship");
+      const mArea = document.getElementById("peopleModalArea");
+      const mSummary = document.getElementById("peopleModalSummary");
+      const mEdu = document.getElementById("peopleModalEdu");
+      const mLinks = document.getElementById("peopleModalLinks");
+
+      let lastActive = null;
+
+      function openModal(personId) {
+        const p = PEOPLE[personId];
+        if (!p) return;
+
+        // PI is fixed card; do not open modal for PI
+        if (personId === "jordi-alcaraz") return;
+
+        lastActive = document.activeElement;
+
+        mAvatar.src = p.avatar || "";
+        mAvatar.alt = p.name || "Portrait";
+        mName.textContent = p.name || "";
+        mRole.textContent = p.role || "";
+        mCit.textContent = p.citizenship || "—";
+        mArea.textContent = p.area || "—";
+        mSummary.textContent = p.summary || "—";
+
+        // Education list
+        mEdu.innerHTML = "";
+        const edu = (p.education || []).filter(Boolean);
+
+        if (edu.length === 0) {
+          const li = document.createElement("li");
+          li.textContent = "—";
+          mEdu.appendChild(li);
+        } else {
+          edu.forEach(item => {
+            const li = document.createElement("li");
+
+            if (typeof item === "string") {
+              const [deg, ...rest] = item.split(",");
+              const degreeText = (deg || "").trim();
+              const instText = rest.join(",").trim();
+
+              const d = document.createElement("div");
+              d.className = "degree";
+              d.textContent = degreeText || item;
+              li.appendChild(d);
+
+              if (instText) {
+                const inst = document.createElement("div");
+                inst.className = "institution";
+                inst.textContent = instText;
+                li.appendChild(inst);
+              }
+            } else {
+              const d = document.createElement("div");
+              d.className = "degree";
+              d.textContent = item.degree || "—";
+
+              const inst = document.createElement("div");
+              inst.className = "institution";
+              inst.textContent = item.institution || "—";
+
+              li.appendChild(d);
+              li.appendChild(inst);
+            }
+
+            mEdu.appendChild(li);
+          });
+        }
+
+        // Links
+        mLinks.innerHTML = "";
+        (p.links || []).forEach(l => {
+          if (!l || !l.href) return;
+          const a = document.createElement("a");
+          a.className = "chip";
+          a.href = l.href;
+          a.target = l.href.startsWith("mailto:") ? "_self" : "_blank";
+          a.rel = l.href.startsWith("mailto:") ? "" : "noopener";
+          a.textContent = l.label || "Link";
+          mLinks.appendChild(a);
+        });
+
+        backdrop.classList.add("active");
+        backdrop.setAttribute("aria-hidden", "false");
+        closeBtn.focus();
+      }
+
+      function closeModal() {
+        backdrop.classList.remove("active");
+        backdrop.setAttribute("aria-hidden", "true");
+        if (lastActive && typeof lastActive.focus === "function") lastActive.focus();
+      }
+
+      // Event delegation: tiles are generated dynamically
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-person]");
+        if (!btn) return;
+        openModal(btn.dataset.person);
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      backdrop.addEventListener("click", (e) => {
+        if (e.target === backdrop) closeModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && backdrop.classList.contains("active")) closeModal();
+      });
+
+      // ==== Gallery lightbox (unchanged) ====
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = lightbox.querySelector("img");
+
+      document.querySelectorAll(".gallery a[data-full]").forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          lightboxImg.src = link.dataset.full;
+          lightbox.classList.add("active");
+          lightbox.setAttribute("aria-hidden", "false");
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.src = "";
+      };
+
+      lightbox.addEventListener("click", closeLightbox);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+
+      // ==== Mobile nav toggle ====
+      (function () {
+        const toggle = document.querySelector(".nav-toggle");
+        const nav = document.querySelector(".navlinks");
+        if (!toggle || !nav) return;
+
+        function closeMenu() {
+          nav.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+
+        toggle.addEventListener("click", () => {
+          const isOpen = nav.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+        document.addEventListener("click", (e) => {
+          const clickedInside = nav.contains(e.target) || toggle.contains(e.target);
+          if (!clickedInside) closeMenu();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeMenu();
+        });
+      })();
+    })();
+  </script>
 </body>
 </html>
