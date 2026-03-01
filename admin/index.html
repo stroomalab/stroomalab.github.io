@@ -6,6 +6,20 @@
   <title>StroomaLab Admin</title>
 </head>
 <body>
+
+  <!-- Ensure Decap boots in manual-init mode -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
+
   <script src="https://unpkg.com/decap-cms@3.10.1/dist/decap-cms.js"></script>
+
+  <!-- Now initialize -->
+  <script>
+    window.addEventListener("load", function () {
+      CMS.init();
+    });
+  </script>
+
 </body>
 </html>
