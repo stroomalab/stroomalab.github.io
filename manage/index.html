@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StroomaLab — Content Manager</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --line:rgba(255,255,255,.12);
+      --btn:#2563eb;
+      --btn2:rgba(255,255,255,.08);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --max:980px;
+      font-synthesis-weight:none;
+    }
+    body{
+      margin:0;
+      background:radial-gradient(1200px 800px at 20% -10%, rgba(37,99,235,.30), transparent 60%),
+                 radial-gradient(900px 700px at 90% 10%, rgba(16,185,129,.18), transparent 55%),
+                 var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.45;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:36px 18px 60px;}
+    .top{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    h1{margin:0; font-size:28px; letter-spacing:.2px;}
+    .hint{color:var(--muted); margin-top:6px; max-width:680px;}
+    .pill{
+      display:inline-block; padding:6px 10px; border:1px solid var(--line); border-radius:999px;
+      color:var(--muted); font-size:12px; background:rgba(255,255,255,.03);
+    }
+    .grid{
+      display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; margin-top:18px;
+    }
+    @media (max-width:760px){ .grid{grid-template-columns:1fr;} }
+    .card{
+      background:rgba(17,24,39,.72);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .card h2{margin:0 0 6px; font-size:16px;}
+    .card p{margin:0 0 12px; color:var(--muted); font-size:13px;}
+    .actions{display:flex; gap:10px; flex-wrap:wrap;}
+    a.btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid transparent;
+      text-decoration:none; color:white; font-weight:600; font-size:13px;
+      background:var(--btn);
+    }
+    a.btn.secondary{
+      background:var(--btn2); border-color:var(--line); color:var(--text); font-weight:600;
+    }
+    a.btn:hover{filter:brightness(1.05)}
+    .steps{
+      margin-top:16px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    ol{margin:8px 0 0 18px; padding:0}
+    li{margin:6px 0}
+    code{
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      padding:2px 6px;
+      border-radius:8px;
+      color:var(--text);
+      font-size:12px;
+    }
+    .footer{
+      margin-top:18px; color:var(--muted); font-size:12px;
+      border-top:1px solid var(--line); padding-top:14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>StroomaLab Content Manager</h1>
+        <div class="hint">
+          Use the buttons below to edit website content directly in GitHub.
+          After you click <b>Commit changes</b>, the website updates automatically.
+        </div>
+      </div>
+      <div class="pill">Private link • Don’t share publicly</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>People — Principal Investigator</h2>
+        <p>Edit PI profile fields (name, role, photo path, bio, education, links).</p>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/edit/main/content/people/pi.json">
+            ✏️ Edit PI (pi.json)
+          </a>
+          <a class="btn secondary" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/upload/main/assets/uploads">
+            🖼 Upload photos
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>People — Current Members</h2>
+        <p>Add/remove/edit members (postdoc/grad/assoc), plus photo paths and links.</p>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/edit/main/content/people/people.json">
+            ✏️ Edit People (people.json)
+          </a>
+          <a class="btn secondary" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/upload/main/assets/uploads">
+            🖼 Upload member photos
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>People — Past Members</h2>
+        <p>Edit the past members table (name/role/year + current position).</p>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/edit/main/content/people/past_members.json">
+            ✏️ Edit Past Members
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Group Pictures (Gallery)</h2>
+        <p>Upload new gallery images and edit captions/alt text.</p>
+        <div class="actions">
+          <a class="btn" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/edit/main/content/people/gallery.json">
+            ✏️ Edit Gallery (gallery.json)
+          </a>
+          <a class="btn secondary" target="_blank" rel="noreferrer"
+             href="https://github.com/stroomalab/stroomalab.github.io/upload/main/assets/gallery">
+            🖼 Upload gallery images
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card steps">
+      <b>How to edit (quick steps)</b>
+      <ol>
+        <li>Click a button above — it opens GitHub in a new tab.</li>
+        <li>If asked, sign in to GitHub.</li>
+        <li>Edit the file. For photos, upload first and then set the path (example: <code>assets/uploads/jane.jpg</code>).</li>
+        <li>Scroll down and click <b>Commit changes</b>.</li>
+        <li>Wait ~1 minute and refresh the website page.</li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      Tip: keep this page unlinked from the main site navigation. It’s meant as a private “admin-like” dashboard.
+    </div>
+  </div>
+</body>
+</html>
