@@ -104,13 +104,41 @@
     .pi-body {
       padding: 16px;
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.4fr .6fr;
       gap: 14px;
     }
     @media (max-width: 820px) {
       .pi-body { grid-template-columns: 1fr; }
     }
 
+    .edu-list {
+      list-style: none;   /* quitamos bullet default */
+      padding-left: 0;    /* quitamos sangría */
+    }
+
+    .edu-list li {
+      position: relative;
+      padding-left: 18px; /* espacio para el guion */
+      margin-bottom: 16px;
+    }
+
+    .edu-list li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: #444;
+    }
+
+    .degree {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .institution {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 2px;
+    }
     /* ===== Modal ===== */
     .modal-backdrop {
       position: fixed;
@@ -205,9 +233,6 @@
       font-weight: 800;
       opacity: .78;
     }
-
-    .edu-list { margin: 0; padding-left: 18px; }
-    .edu-list li { margin: 6px 0; }
 
     .link-row {
       display: flex;
@@ -311,9 +336,20 @@
 
             <h4 style="margin-top:14px;">Education</h4>
             <ul class="edu-list">
-              <li>Ph.D. in Biophysics, University of Barcelona (Spain), 2002</li>
-              <li>M.Sc. in Cell Physiology, University of Barcelona (Spain), 2000</li>
-              <li>B.Sc. in Physics, University of Barcelona (Spain), 1997</li>
+              <li>
+                <div class="degree">Ph.D. in Biophysics</div>
+                <div class="institution">University of Barcelona (Spain), 2002</div>
+              </li>
+            
+              <li>
+                <div class="degree">M.Sc. in Cell Physiology</div>
+                <div class="institution">University of Barcelona (Spain), 2000</div>
+              </li>
+            
+              <li>
+                <div class="degree">B.Sc. in Physics</div>
+                <div class="institution">University of Barcelona (Spain), 1997</div>
+              </li>
             </ul>
           </div>
         </div>
@@ -594,13 +630,12 @@
         citizenship: "Spain",
         area: "Area",
         education: [
-          "PhD in Biomedicine, University of Barcelona (Spain), 2016",
-          "M.Sc. in Biomedicine, University of Barcelona (Spain), 2010",
-          "B.Sc. in Biochemistry, Autonomous University of Barcelona (Spain), 2009",
-          "B.Sc. in Biology, Autonomous University of Barcelona (Spain), 2008"
+          { degree: "PhD in Biomedicine", institution: "University of Barcelona (Spain), 2016" },
+          { degree: "M.Sc. in Biomedicine", institution: "University of Barcelona (Spain), 2010" },
+          { degree: "B.Sc. in Biochemistry", institution: "Autonomous University of Barcelona (Spain), 2009" },
+          { degree: "B.Sc. in Biology", institution: "Autonomous University of Barcelona (Spain), 2008" }
         ],
-        summary:
-          "Summary.",
+        summary: "Summary.",
         links: [
           { label: "Email", href: "mailto:pfernandezn@ub.edu" }
         ]
@@ -613,9 +648,9 @@
         citizenship: "Spain",
         area: "Biophysics, Single-Molecule Physics, Cancer Mechanobiology",
         education: [
-          "PhD in Physics, University of Barcelona (Spain), 2022",
-          "M.Sc. in Photonics, Polytechnic University of Catalonia (Spain), 2014",
-          "B.Sc. in Physics, University of Barcelona (Spain), 2013"
+          { degree: "PhD in Physics", institution: "University of Barcelona (Spain), 2022" },
+          { degree: "M.Sc. in Photonics", institution: "Polytechnic University of Catalonia (Spain), 2014" },
+          { degree: "B.Sc. in Physics", institution: "University of Barcelona (Spain), 2013" }
         ],
         summary:
           "Marc Rico-Pastó is a postdoctoral researcher working at the interface of physics and biomedicine. His research focuses on single-molecule biophysics, feedback thermodynamics, and mechanobiology applied to cancer research. He studies the mechanical properties of lung cancer cells using force-spectroscopy techniques to understand tumor progression and metastasis. His previous work explored molecular folding, fluctuation theorems, and non-equilibrium thermodynamics through experimental and theoretical approaches.",
@@ -631,11 +666,10 @@
         citizenship: "Spain",
         area: "Area",
         education: [
-          "M.Sc. in Biomedical Research, Pompeu Fabra University (Spain), 2021",
-          "B.Sc. in Biotechnology, Universidad de Oviedo (Spain), 2020"
+          { degree: "M.Sc. in Biomedical Research", institution: "Pompeu Fabra University (Spain), 2021" },
+          { degree: "B.Sc. in Biotechnology", institution: "Universidad de Oviedo (Spain), 2020" }
         ],
-        summary:
-          "Summary.",
+        summary: "Summary.",
         links: [
           { label: "Email", href: "mailto:abernardo@ub.edu" }
         ]
@@ -648,8 +682,8 @@
         citizenship: "Argentina / Spain",
         area: "Tumor Microenvironment, Immunology, Lung Cancer Research",
         education: [
-          "M.Sc. in Biotechnology, Universidad de Buenos Aires (Argentina), 2022",
-          "B.Sc. in Chemical Sciences, Universidad de Buenos Aires (Argentina), 2017"
+          { degree: "M.Sc. in Biotechnology", institution: "Universidad de Buenos Aires (Argentina), 2022" },
+          { degree: "B.Sc. in Chemical Sciences", institution: "Universidad de Buenos Aires (Argentina), 2017" }
         ],
         summary:
           "Victoria Batto is a graduate researcher working on translational cancer research focused on the tumor microenvironment and the immunosuppressive role of tumor-associated fibroblasts in lung cancer. She combines experience from the pharmaceutical industry with strong training in molecular and cellular biology techniques, including immunology, virology, and functional cell assays.",
@@ -665,8 +699,8 @@
         citizenship: "Spain",
         area: "Cancer Biology, Breast Cancer Metastasis, Tumor Microenvironment",
         education: [
-          "M.Sc. in TraBiomedicine, University of Barcelona (Spain), 2024",
-          "B.Sc. in Biomedical Sciences, University of Barcelona (Spain), 2023"
+          { degree: "M.Sc. in TraBiomedicine", institution: "University of Barcelona (Spain), 2024" },
+          { degree: "B.Sc. in Biomedical Sciences", institution: "University of Barcelona (Spain), 2023" }
         ],
         summary:
           "Teia Vallès is a predoctoral researcher focused on cancer biology and metastasis. Her research investigates how tumor-associated fibroblasts regulate invasion, migration, and survival of cancer cells, particularly in HER2+ breast cancer. She has research experience in international cancer laboratories and expertise in cell culture, organ-on-chip models, confocal microscopy, and molecular analysis techniques.",
@@ -694,13 +728,13 @@
         citizenship: "Costa Rica",
         area: "Digital Pathology automation",
         education: [
-          "M.Sc. in Medical Image Computing, Universitat de Girona (Spain), 2025",
-          "M.Sc. in Computer Engineering, Università degli Studi di Cassino e del Lazio Meridionale (Italy), 2025",
-          "M.Sc. in Design and Management of Technological Projects, Universidad Internacional de La Rioja (Mexico), 2021",
-          "B.Sc. in Mechatronics Engineering, Costa Rica Institute of Technology (Costa Rica), 2019"
+          { degree: "M.Sc. in Medical Image Computing", institution: "Universitat de Girona (Spain), 2025" },
+          { degree: "M.Sc. in Computer Engineering", institution: "Università degli Studi di Cassino (Italy), 2025" },
+          { degree: "M.Sc. in Design and Management of Technological Projects", institution: "Universidad Internacional de La Rioja (Mexico), 2021" },
+          { degree: "B.Sc. in Mechatronics Engineering", institution: "Costa Rica Institute of Technology (C.R), 2019" }
         ],
         summary:
-          "Medical image computing engineer specializing in quantitative medical imaging, AI-driven analysis, and research software development. His work focuses on building image processing pipelines for biomedical applications, including MRI analysis, histopathology reconstruction, and machine learning–based clinical imaging tools. He combines experience in medical device R&D, regulatory environments, and interdisciplinary collaboration to translate computational methods into practical healthcare solutions.",
+          "Medical image computing engineer specializing in quantitative medical imaging, AI-driven analysis, and research software development. His work focuses on building image processing pipelines for biomedical applications, including histopathology segmentation, registration and feature extraction. He combines experience in medical device R&D, regulatory environments, and interdisciplinary collaboration to translate computational methods into practical healthcare solutions.",
         links: [
           { label: "Email", href: "mailto:juaco2r@gmail.com" }
         ]
@@ -759,11 +793,52 @@
         li.textContent = "—";
         mEdu.appendChild(li);
       } else {
-        edu.forEach(e => {
+        // Education list
+      mEdu.innerHTML = "";
+      const edu = (p.education || []).filter(Boolean);
+
+      if (edu.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "—";
+        mEdu.appendChild(li);
+      } else {
+        edu.forEach(item => {
           const li = document.createElement("li");
-          li.textContent = e;
+
+          // Backward compatible: if item is still a string
+          if (typeof item === "string") {
+            const [deg, ...rest] = item.split(",");
+            const degreeText = (deg || "").trim();
+            const instText = rest.join(",").trim();
+
+            const d = document.createElement("div");
+            d.className = "degree";
+            d.textContent = degreeText || item;
+
+            li.appendChild(d);
+
+            if (instText) {
+              const inst = document.createElement("div");
+              inst.className = "institution";
+              inst.textContent = instText;
+              li.appendChild(inst);
+            }
+          } else {
+            const d = document.createElement("div");
+            d.className = "degree";
+            d.textContent = item.degree || "—";
+
+            const inst = document.createElement("div");
+            inst.className = "institution";
+            inst.textContent = item.institution || "—";
+
+            li.appendChild(d);
+            li.appendChild(inst);
+          }
+
           mEdu.appendChild(li);
         });
+      }
       }
 
       // Links
