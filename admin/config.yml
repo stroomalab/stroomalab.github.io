@@ -1,8 +1,7 @@
 backend:
-  name: github
-  repo: TU_USUARIO/TU_REPO   # <-- CAMBIA ESTO por "owner/repo"
+  name: git-gateway
   branch: main
-
+  
 publish_mode: editorial_workflow
 
 media_folder: "assets/uploads"
