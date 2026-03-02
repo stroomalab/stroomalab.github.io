@@ -189,12 +189,25 @@
       "group": "assoc"
     },
     {
-      "citizenship": "",
-      "summary": "Collaborates on tissue nanomechanics and mechanobiology questions, linking physical measurements with biology.",
-      "education": [],
+      "citizenship": "France",
+      "summary": "Nanthilde Malandain is a postdoctoral researcher working on tissue nanomechanics, particularly in the context of lung cancer. Her current research is conducted through a collaboration involving ARTIDIS (Switzerland), with a focus on nanomechanical profiling for diagnostic and treatment optimization applications. Her previous work focused on the development of physiomimetic biomaterials and investigate how microenvironmental cues shape mesenchymal stromal cell behavior.",
+      "education": [
+        {
+          "degree": "PhD in Biotechnology",
+          "institution": "Universitat Autònoma de Barcelona (Spain), 2025"
+        },
+        {
+          "degree": "M.Sc. in Molecular and Cellular Biology",
+          "institution": "Université de Rennes (France), 2019"
+        },
+        {
+          "degree": "B.Sc. in Life Sciences",
+          "institution": "Université Le Havre Normandie (France), 2017"
+        }
+      ],
       "name": "Nanthilde Malandain",
       "area": "Tissue nanomechanics",
-      "role": "Associated profile",
+      "role": "Postdoctoral researcher",
       "avatar": "assets/people/nanthilde.png",
       "links": [],
       "id": "nanthilde-malandain",
