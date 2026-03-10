@@ -144,9 +144,18 @@
     },
     {
       "citizenship": "Spain",
-      "summary": "Pathologist associated with the lab, collaborating on translational studies and tissue-based characterization.",
-      "education": [],
-      "name": "Laura López",
+      "summary": "Senior pathologist specializing in thoracic pathology, with a strong association to the laboratory and an active role in translational research. My work focuses on the detailed histological characterization of thoracic tumors and the comprehensive assessment of immunohistochemical biomarkers, integrating diagnostic expertise with research-driven approaches.",
+      "education": [
+        {
+          "degree": "M.D. in Medicine",
+          "institution": "University of Lleida (Spain), 2006"
+        },
+        {
+          "degree": "Residency in Anatomic Pathology",
+          "institution": "Hospital del Mar (Barcelona, Spain), 2007–2011"
+        }
+      ],
+      "name": "Laura López Vilaró",
       "area": "Pathology; thoracic tumors",
       "role": "Associated profile",
       "avatar": "assets/people/lauralopez.png",
