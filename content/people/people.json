@@ -66,21 +66,21 @@
     },
     {
       "citizenship": "Spain",
-      "summary": "Summary.",
+      "summary": "Alejandro Bernardo is a predoctoral researcher who is focused on understanding how the tumor microenvironment contributes to the metastatic progression of non-small cell lung cancer (NSCLC), with particular emphasis on fibroblast heterogeneity, stromal remodeling and collagen architecture. By combining molecular biology approaches and functional assays including signaling studies, he investigates how the tumor and the stroma interact to promote metastatic dissemination.",
       "education": [
-        {
-          "degree": "M.Sc. in Biomedical Research",
-          "institution": "Pompeu Fabra University (Spain), 2021"
-        },
         {
           "degree": "B.Sc. in Biotechnology",
           "institution": "Universidad de Oviedo (Spain), 2020"
+        },
+        {
+          "degree": "M.Sc. in Biomedical Research",
+          "institution": "Universitat Pompeu Fabra (Spain), 2021"
         }
       ],
       "name": "Alejandro Bernardo Suarez",
-      "area": "Area",
+      "area": "NSCLC microenvironment, brain metastasis",
       "role": "Graduate student",
-      "avatar": "assets/people/berni.gif",
+      "avatar": "assets/people/berni.png",
       "links": [
         {
           "label": "Email",
