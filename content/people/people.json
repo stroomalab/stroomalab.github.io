@@ -118,19 +118,19 @@
     },
     {
       "citizenship": "Spain",
-      "summary": "Teia Vallès is a predoctoral researcher focused on cancer biology and metastasis. Her research investigates how tumor-associated fibroblasts regulate invasion, migration, and survival of cancer cells, particularly in HER2+ breast cancer. She has research experience in international cancer laboratories and expertise in cell culture, organ-on-chip models, confocal microscopy, and molecular analysis techniques.",
+      "summary": "Teia Vallès Pagès is a predoctoral researcher studying cancer biology and metastasis. Her work focuses on understanding the role of tumor-associated fibroblasts (TAFs) in HER2+ breast cancer metastasis, particularly during the circulation stage of the metastatic cascade. Using a biomimetic fluidic system developed in the lab, she investigates how shear stress affects circulating tumor cell survival and how TAFs may enhance it through mechanisms such as clustering and paracrine signaling. Her expertise includes cell culture, fluidic systems and organ-on-chip models, confocal microscopy, and molecular analysis techniques. Teia previously conducted research abroad, including her bachelor’s thesis in Lund, Sweden, and is also involved in science outreach initiatives such as “La Festa de la Ciència” and “Petites Mirades”, both from the University of Barcelona (UB).",
       "education": [
         {
-          "degree": "M.Sc. in TraBiomedicine",
-          "institution": "University of Barcelona (Spain), 2024"
+          "degree": "M.Sc. in Biomedicine (Basic and Translational Cancer Research)",
+          "institution": "Universitat de Barcelona (UB), 2024"
         },
         {
           "degree": "B.Sc. in Biomedical Sciences",
-          "institution": "University of Barcelona (Spain), 2023"
+          "institution": "Universitat de Barcelona (UB), 2023"
         }
       ],
       "name": "Teia Vallès",
-      "area": "Cancer Biology, Breast Cancer Metastasis, Tumor Microenvironment",
+      "area": "Cancer biology, Breast Cancer Metastasis, Tumor microenvironment",
       "role": "Graduate student",
       "avatar": "assets/people/teia.jpeg",
       "links": [

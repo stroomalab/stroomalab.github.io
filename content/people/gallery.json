@@ -1,6 +1,31 @@
 {
     "images": [
       {
+        "src": "assets/gallery/Festa_ciencia1.png",
+        "caption": "Participation on Festa de la Ciència 2025",
+        "alt": "Participation on Festa de la Ciència 2025"
+      },
+      {
+        "src":  "assets/gallery/Festa_ciencia2.png",
+        "caption": "Participation on Festa de la Ciència 2025",
+        "alt": "Participation on Festa de la Ciència 2025"
+      },
+      {
+        "src":  "assets/gallery/Festa_ciencia3.png",
+        "caption": "Participation on Festa de la Ciència 2025",
+        "alt": "Participation on Festa de la Ciència 20254"
+      },
+      {
+        "src":  "assets/gallery/PetitesMirades1.jpeg",
+        "caption": "Participation on Petites Mirades 2025",
+        "alt": "Participation on Petites Mirades 2025"
+      },
+      {
+        "src":  "assets/gallery/PetitesMirades1.jpeg",
+        "caption": "Participation on Petites Mirades 2025",
+        "alt": "Participation on Petites Mirades 2025"
+      },
+      {
         "src": "assets/gallery/aseica-meeting-zaragoza-2024.jpg",
         "caption": "ASEICA meeting, Zaragoza 2024",
         "alt": "ASEICA meeting, Zaragoza 2024"
