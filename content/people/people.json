@@ -220,7 +220,28 @@
       "avatar": "assets/people/nanthilde.png",
       "links": [],
       "id": "nanthilde-malandain",
-      "group": "assoc"
+      "group": "postdoc"
+    },
+    {
+      "citizenship": "Macedonia",
+      "summary": "Edi is a predoctoral researcher studying non-small cell lung cancer (NSCLC), with a particular interest in the interaction between the immune system and cancer-associated fibroblasts within the tumour microenvironment. He holds an MSc in Clinical Immunology and a BSc in Immunology from the University of Manchester. Prior to starting his PhD, he worked in industry as an R&D Laboratory Scientist where he contributed to projects evaluating novel therapeutic targets using cell-based and immunological assays and worked on novel target binding products called Ankyrons. His current work focuses on understanding tumour–immune interactions and how the tumour microenvironment shapes immune responses in cancer.",
+      "education": [
+        {
+          "degree": "MSc Clinical Immunology",
+          "institution": "University of Manchester (United Kingdom), "
+        },
+        {
+          "degree": "B.Sc.(Hons) Immunology",
+          "institution": "University of Manchester (United Kingdom), "
+        }
+      ],
+      "name": "Edi Reshidi",
+      "area": "Cancer biology; Immune landscape in cancer",
+      "role": "Graduate student",
+      "avatar": "assets/people/edireshidi.jpg",
+      "links": [],
+      "id": "edi-reshidi",
+      "group": "grad"
     }
   ]
 }
