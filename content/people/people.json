@@ -36,23 +36,23 @@
     },
     {
       "citizenship": "Spain",
-      "summary": "Marc Rico-Pastó is a postdoctoral researcher working at the interface of physics and biomedicine. His research focuses on single-molecule biophysics, feedback thermodynamics, and mechanobiology applied to cancer research. He studies the mechanical properties of lung cancer cells using force-spectroscopy techniques to understand tumor progression and metastasis. His previous work explored molecular folding, fluctuation theorems, and non-equilibrium thermodynamics through experimental and theoretical approaches.",
+      "summary": "Marc Rico Pastó is a postdoctoral researcher studying cancer tissue mechanics and circulating tumor cells (CTCs). His primary goal is to understand how cellular biomechanics contribute to cancer dissemination, including cell migration and survival during circulation. Employing a biomimetic system, CircON, developed in the lab, he investigates CTC cell survival under various pro-apoptotic cues in circulation. He aims to identify previously overlooked cellular pathways to develop innovative cancer therapies that can prevent metastasis. To achieve this, he will leverage his expertise in single-molecule biophysics, feedback thermodynamics, and mechanobiology. His previous work explored molecular folding, fluctuation theorems, and non-equilibrium thermodynamics through experimental and theoretical approaches.",
       "education": [
         {
           "degree": "PhD in Physics",
-          "institution": "University of Barcelona (Spain), 2022"
+          "institution": "University of Barcelona, UB, (Spain), 2022"
         },
         {
           "degree": "M.Sc. in Photonics",
-          "institution": "Polytechnic University of Catalonia (Spain), 2014"
+          "institution": "Polytechnic University of Catalonia, UPC, (Spain)2014"
         },
         {
           "degree": "B.Sc. in Physics",
-          "institution": "University of Barcelona (Spain), 2013"
+          "institution": "University of Barcelona, UB, (Spain), 2013"
         }
       ],
       "name": "Marc Rico-Pastó",
-      "area": "Biophysics, Single-Molecule Physics, Cancer Mechanobiology",
+      "area": "Cancer Cells Biomechanics, CTC Cell Survival, Bioengineering",
       "role": "Postdoctoral researcher",
       "avatar": "assets/people/marc.gif",
       "links": [
